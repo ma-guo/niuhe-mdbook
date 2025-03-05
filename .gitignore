@@ -1,12 +1,5 @@
 bin/*
 *.pyc
 niuhe.log
-typings
-typings/types.d.ts
-typings/event.d.ts
-typings/request.ts
-typings/api.ts
 niuhe/.config
-niuhe/.config.json5
-vite
 .vscode
