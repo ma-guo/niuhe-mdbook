@@ -1,0 +1,30 @@
+#app=demo
+
+include('comm.niuhe')
+include('api_config.niuhe')
+
+class Language(ConstGroup):
+    '''语言枚举类'''
+    ZH = Item("zh", "中文")
+    EN = Item("en", "英文")
+
+class LanguageType(ConstGroup):
+    '''语言类型枚举'''
+    ZH_CN = Item(1, "简体中文")
+    ZH_TW = Item(2, "繁体中文")
+
+class HelloReq():
+    '''测试请求'''
+    name = required.String(desc='用户名')
+
+class HelloRsp(Message):
+   '''测试响应'''
+    greeting = required.String(desc='问候语')
+    
+class NihaoReq(HelloReq):
+    '''你好请求'''
+    mingzi = required.String(desc='名字')
+
+with services():
+    GET('示例接口', '/api/hello/world/', HelloReq, HelloRsp)
+    GET('协议文档', '/api/hello/docs/')

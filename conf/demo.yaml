@@ -1,0 +1,9 @@
+serveraddr: :9999
+loglevel: INFO
+db:
+  showsql: false
+  debug: true
+  sync: true
+  main: user:pwd@tcp(host:port)/database_name?charset=utf8mb4
+secretkey: 123456
+host: http://localhost:9999

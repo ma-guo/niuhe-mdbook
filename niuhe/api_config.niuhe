@@ -1,0 +1,38 @@
+
+class ConfigItem():
+	'''系统配置表'''
+	id = optional.Long(desc='id')
+	name = required.StringField(desc='配置名称')
+	value = required.LongField(desc='配置值')
+	create_at = optional.String(desc='创建时间')
+	update_at = optional.String(desc='更新时间')
+
+class ConfigFormReq():
+	'''请求 Config 信息'''
+	id = required.Long()
+
+class ConfigPageReq():
+	'''分页查询 Config 信息'''
+	page = required.Integer(desc='页码')
+	size = required.Integer(desc='每页数量')
+	value = required.LongField(desc='配置值')
+
+class ConfigPageRsp():
+	'''分页查询 Config 信息'''
+	total = required.Long(desc='总数')
+	items = repeated.Message(cls=ConfigItem, desc='Config信息')
+
+class ConfigDeleteReq():
+	'''批量删除 Config 信息'''
+	ids = repeated.Long(desc='记录id列表')
+
+class ConfigNoneRsp():
+	'''Config 无数据返回'''
+	pass
+
+with services():
+	GET('分页查询获取 Config 信息', '/api/config/page/', ConfigPageReq, ConfigPageRsp)
+	GET('查询获取 Config 信息', '/api/config/form/', ConfigFormReq, ConfigItem)
+	POST('添加 Config 信息', '/api/config/add/', ConfigItem, ConfigItem)
+	POST('更新 Config 信息', '/api/config/update/', ConfigItem, ConfigItem)
+	DELETE('删除 Config 信息', '/api/config/delete/', ConfigDeleteReq, ConfigNoneRsp)

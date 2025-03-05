@@ -1,0 +1,658 @@
+{
+    "consumes": [
+        "application/x-www-form-urlencoded"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "title": "Demo",
+        "description": "Demo api documents",
+        "contact": {
+            "email": "your email address"
+        },
+        "version": "3.0.0",
+        "license": {
+            "name": "MIT",
+            "url": "github"
+        }
+    },
+    "host": "",
+    "basePath": "",
+    "paths": {
+        "/api/config/page/": {
+            "get": {
+                "description": "分页查询获取 Config 信息",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "分页查询获取 Config 信息",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "页码"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "每页数量"
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "配置值"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "分页查询,Config,信息",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "number",
+                                    "description": "返回状态码"
+                                },
+                                "data": {
+                                    "description": "成功时返回数据",
+                                    "$ref": "#/definitions/Demo.ConfigPageRsp"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "失败时的提示消息"
+                                }
+                            },
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {
+                                    "total": 0,
+                                    "items": [
+                                        {
+                                            "id": 0,
+                                            "name": "",
+                                            "value": 0,
+                                            "create_at": "",
+                                            "update_at": ""
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": "#/definitions/Demo.ConfigPageReq"
+            }
+        },
+        "/api/config/form/": {
+            "get": {
+                "description": "查询获取 Config 信息",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "查询获取 Config 信息",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "系统配置表",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "number",
+                                    "description": "返回状态码"
+                                },
+                                "data": {
+                                    "description": "成功时返回数据",
+                                    "$ref": "#/definitions/Demo.ConfigItem"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "失败时的提示消息"
+                                }
+                            },
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {
+                                    "id": 0,
+                                    "name": "",
+                                    "value": 0,
+                                    "create_at": "",
+                                    "update_at": ""
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": "#/definitions/Demo.ConfigFormReq"
+            }
+        },
+        "/api/config/add/": {
+            "post": {
+                "description": "添加 Config 信息",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "添加 Config 信息",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": "配置名称"
+                    },
+                    {
+                        "name": "value",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "description": "配置值"
+                    },
+                    {
+                        "name": "create_at",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string",
+                        "description": "创建时间"
+                    },
+                    {
+                        "name": "update_at",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string",
+                        "description": "更新时间"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "系统配置表",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "number",
+                                    "description": "返回状态码"
+                                },
+                                "data": {
+                                    "description": "成功时返回数据",
+                                    "$ref": "#/definitions/Demo.ConfigItem"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "失败时的提示消息"
+                                }
+                            },
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {
+                                    "id": 0,
+                                    "name": "",
+                                    "value": 0,
+                                    "create_at": "",
+                                    "update_at": ""
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": "#/definitions/Demo.ConfigItem"
+            }
+        },
+        "/api/config/update/": {
+            "post": {
+                "description": "更新 Config 信息",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "更新 Config 信息",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": "配置名称"
+                    },
+                    {
+                        "name": "value",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "description": "配置值"
+                    },
+                    {
+                        "name": "create_at",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string",
+                        "description": "创建时间"
+                    },
+                    {
+                        "name": "update_at",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string",
+                        "description": "更新时间"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "系统配置表",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "number",
+                                    "description": "返回状态码"
+                                },
+                                "data": {
+                                    "description": "成功时返回数据",
+                                    "$ref": "#/definitions/Demo.ConfigItem"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "失败时的提示消息"
+                                }
+                            },
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {
+                                    "id": 0,
+                                    "name": "",
+                                    "value": 0,
+                                    "create_at": "",
+                                    "update_at": ""
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": "#/definitions/Demo.ConfigItem"
+            }
+        },
+        "/api/config/delete/": {
+            "delete": {
+                "description": "删除 Config 信息",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "删除 Config 信息",
+                "parameters": [
+                    {
+                        "name": "ids",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "记录id列表"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Config,无数据返回",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "number",
+                                    "description": "返回状态码"
+                                },
+                                "data": {
+                                    "description": "成功时返回数据",
+                                    "$ref": "#/definitions/Demo.ConfigNoneRsp"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "失败时的提示消息"
+                                }
+                            },
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {}
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": "#/definitions/Demo.ConfigDeleteReq"
+            }
+        },
+        "/api/hello/world/": {
+            "get": {
+                "description": "示例接口",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "示例接口",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "用户名"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "测试响应",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "number",
+                                    "description": "返回状态码"
+                                },
+                                "data": {
+                                    "description": "成功时返回数据",
+                                    "$ref": "#/definitions/Demo.HelloRsp"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "失败时的提示消息"
+                                }
+                            },
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {
+                                    "greeting": ""
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": "#/definitions/Demo.HelloReq"
+            }
+        },
+        "/api/hello/docs/": {
+            "get": {
+                "description": "协议文档",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "协议文档",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "json response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {},
+                            "required": []
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {}
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": ""
+            }
+        }
+    },
+    "definitions": {
+        "Demo.ConfigPageReq": {
+            "type": "object",
+            "properties": {
+                "page": {
+                    "type": "integer",
+                    "description": "页码"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "每页数量"
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "配置值"
+                }
+            },
+            "required": [
+                "page",
+                "size",
+                "value"
+            ]
+        },
+        "Demo.ConfigPageRsp": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "总数"
+                },
+                "items": {
+                    "type": "array",
+                    "description": "Config信息",
+                    "items": {
+                        "$ref": "#/definitions/Demo.ConfigItem"
+                    }
+                }
+            },
+            "required": [
+                "total",
+                "items"
+            ]
+        },
+        "Demo.ConfigItem": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "id"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "配置名称"
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "配置值"
+                },
+                "create_at": {
+                    "type": "string",
+                    "description": "创建时间"
+                },
+                "update_at": {
+                    "type": "string",
+                    "description": "更新时间"
+                }
+            },
+            "required": [
+                "id",
+                "name",
+                "value",
+                "create_at",
+                "update_at"
+            ]
+        },
+        "Demo.ConfigFormReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "undefined"
+                }
+            },
+            "required": [
+                "id"
+            ]
+        },
+        "Demo.ConfigDeleteReq": {
+            "type": "object",
+            "properties": {
+                "ids": {
+                    "type": "array",
+                    "description": "记录id列表",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "required": [
+                "ids"
+            ]
+        },
+        "Demo.ConfigNoneRsp": {
+            "type": "object",
+            "properties": {},
+            "required": []
+        },
+        "Demo.HelloReq": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "用户名"
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "Demo.HelloRsp": {
+            "type": "object",
+            "properties": {
+                "greeting": {
+                    "type": "string",
+                    "description": "问候语"
+                }
+            },
+            "required": [
+                "greeting"
+            ]
+        }
+    },
+    "securityDefinitions": {
+        "bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

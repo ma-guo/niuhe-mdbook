@@ -1,0 +1,11 @@
+#mode 可选 默认值为 api,
+#niuhe 可选, 默认值为 False, 在生成对应的 niuhe 是否覆盖已存在的 niuhe 文件内容
+#dao 可选, 默认值为 False, 在生成对应的 dao 是否覆盖已存在的 dao 文件内容
+#service 可选, 默认值为 False, 在生成对应的 service 是否覆盖已存在的 service 文件内容
+#model 可选, 默认值为 False, 在生成对应的 model 是否覆盖已存在的 model 文件内容
+#vite 可选, 默认值为 False, 在生成对应的 vite 是否覆盖已存在的 vite 文件内容, 需在 .config.json5 中 langs 中添加 "vite"
+#这里是做示例用, 实际开发中直接写 class Config():即可
+class Config(mode='api', niuhe=True, dao=True, service=True, model=True, vite=True):
+    '''系统配置表'''
+    name = required.String(desc='配置名称', index=True, search=True, len=255, notnull=True)# index 加索引, len varchar 最大长度, notnull 是否为空 search 分页查询时是否出现在参数中
+    value = required.Long(desc='配置值', search=True)

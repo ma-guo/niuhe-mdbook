@@ -1,0 +1,552 @@
+{
+    "app": "demo",
+    "routes": [
+        {
+            "method": "get",
+            "url": "/api/config/page/",
+            "mode": "api",
+            "desc": "分页查询获取 Config 信息",
+            "rsp": {
+                "name": "ConfigPageRsp",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "total",
+                        "desc": "总数"
+                    },
+                    {
+                        "label": "repeated",
+                        "type": "message",
+                        "name": "items",
+                        "desc": "Config信息",
+                        "ref": "ConfigItem"
+                    }
+                ],
+                "mode": "api",
+                "desc": "分页查询,Config,信息"
+            },
+            "req": {
+                "name": "ConfigPageReq",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "integer",
+                        "name": "page",
+                        "desc": "页码"
+                    },
+                    {
+                        "label": "required",
+                        "type": "integer",
+                        "name": "size",
+                        "desc": "每页数量"
+                    },
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "value",
+                        "desc": "配置值"
+                    }
+                ],
+                "mode": "api",
+                "desc": "分页查询,Config,信息"
+            }
+        },
+        {
+            "method": "get",
+            "url": "/api/config/form/",
+            "mode": "api",
+            "desc": "查询获取 Config 信息",
+            "rsp": {
+                "name": "ConfigItem",
+                "fields": [
+                    {
+                        "label": "optional",
+                        "type": "long",
+                        "name": "id",
+                        "desc": "id"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "name",
+                        "desc": "配置名称"
+                    },
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "value",
+                        "desc": "配置值"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "create_at",
+                        "desc": "创建时间"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "update_at",
+                        "desc": "更新时间"
+                    }
+                ],
+                "mode": "api",
+                "desc": "系统配置表"
+            },
+            "req": {
+                "name": "ConfigFormReq",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "id",
+                        "desc": ""
+                    }
+                ],
+                "mode": "api",
+                "desc": "请求,Config,信息"
+            }
+        },
+        {
+            "method": "post",
+            "url": "/api/config/add/",
+            "mode": "api",
+            "desc": "添加 Config 信息",
+            "rsp": {
+                "name": "ConfigItem",
+                "fields": [
+                    {
+                        "label": "optional",
+                        "type": "long",
+                        "name": "id",
+                        "desc": "id"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "name",
+                        "desc": "配置名称"
+                    },
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "value",
+                        "desc": "配置值"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "create_at",
+                        "desc": "创建时间"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "update_at",
+                        "desc": "更新时间"
+                    }
+                ],
+                "mode": "api",
+                "desc": "系统配置表"
+            },
+            "req": {
+                "name": "ConfigItem",
+                "fields": [
+                    {
+                        "label": "optional",
+                        "type": "long",
+                        "name": "id",
+                        "desc": "id"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "name",
+                        "desc": "配置名称"
+                    },
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "value",
+                        "desc": "配置值"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "create_at",
+                        "desc": "创建时间"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "update_at",
+                        "desc": "更新时间"
+                    }
+                ],
+                "mode": "api",
+                "desc": "系统配置表"
+            }
+        },
+        {
+            "method": "post",
+            "url": "/api/config/update/",
+            "mode": "api",
+            "desc": "更新 Config 信息",
+            "rsp": {
+                "name": "ConfigItem",
+                "fields": [
+                    {
+                        "label": "optional",
+                        "type": "long",
+                        "name": "id",
+                        "desc": "id"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "name",
+                        "desc": "配置名称"
+                    },
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "value",
+                        "desc": "配置值"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "create_at",
+                        "desc": "创建时间"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "update_at",
+                        "desc": "更新时间"
+                    }
+                ],
+                "mode": "api",
+                "desc": "系统配置表"
+            },
+            "req": {
+                "name": "ConfigItem",
+                "fields": [
+                    {
+                        "label": "optional",
+                        "type": "long",
+                        "name": "id",
+                        "desc": "id"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "name",
+                        "desc": "配置名称"
+                    },
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "value",
+                        "desc": "配置值"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "create_at",
+                        "desc": "创建时间"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "update_at",
+                        "desc": "更新时间"
+                    }
+                ],
+                "mode": "api",
+                "desc": "系统配置表"
+            }
+        },
+        {
+            "method": "delete",
+            "url": "/api/config/delete/",
+            "mode": "api",
+            "desc": "删除 Config 信息",
+            "rsp": {
+                "name": "ConfigNoneRsp",
+                "fields": [],
+                "mode": "api",
+                "desc": "Config,无数据返回"
+            },
+            "req": {
+                "name": "ConfigDeleteReq",
+                "fields": [
+                    {
+                        "label": "repeated",
+                        "type": "long",
+                        "name": "ids",
+                        "desc": "记录id列表"
+                    }
+                ],
+                "mode": "api",
+                "desc": "批量删除,Config,信息"
+            }
+        },
+        {
+            "method": "get",
+            "url": "/api/hello/world/",
+            "mode": "api",
+            "desc": "示例接口",
+            "rsp": {
+                "name": "HelloRsp",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "greeting",
+                        "desc": "问候语"
+                    }
+                ],
+                "mode": "api",
+                "desc": "测试响应"
+            },
+            "req": {
+                "name": "HelloReq",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "name",
+                        "desc": "用户名"
+                    }
+                ],
+                "mode": "api",
+                "desc": "测试请求"
+            }
+        },
+        {
+            "method": "get",
+            "url": "/api/hello/docs/",
+            "mode": "api",
+            "desc": "协议文档"
+        }
+    ],
+    "enums": {
+        "api_Language": {
+            "mode": "api",
+            "name": "Language",
+            "desc": "语言枚举类",
+            "values": [
+                {
+                    "name": "ZH",
+                    "desc": "中文",
+                    "value": "zh"
+                },
+                {
+                    "name": "EN",
+                    "desc": "英文",
+                    "value": "en"
+                }
+            ],
+            "type": "string"
+        },
+        "api_LanguageType": {
+            "mode": "api",
+            "name": "LanguageType",
+            "desc": "语言类型枚举",
+            "values": [
+                {
+                    "name": "ZH_CN",
+                    "desc": "简体中文",
+                    "value": "1"
+                },
+                {
+                    "name": "ZH_TW",
+                    "desc": "繁体中文",
+                    "value": "2"
+                }
+            ],
+            "type": "integer"
+        }
+    },
+    "messages": {
+        "ConfigPageRsp": {
+            "name": "ConfigPageRsp",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "long",
+                    "name": "total",
+                    "desc": "总数"
+                },
+                {
+                    "label": "repeated",
+                    "type": "message",
+                    "name": "items",
+                    "desc": "Config信息",
+                    "ref": "ConfigItem"
+                }
+            ],
+            "mode": "api",
+            "desc": "分页查询,Config,信息"
+        },
+        "api_ConfigPageReq": {
+            "name": "ConfigPageReq",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "integer",
+                    "name": "page",
+                    "desc": "页码"
+                },
+                {
+                    "label": "required",
+                    "type": "integer",
+                    "name": "size",
+                    "desc": "每页数量"
+                },
+                {
+                    "label": "required",
+                    "type": "long",
+                    "name": "value",
+                    "desc": "配置值"
+                }
+            ],
+            "mode": "api",
+            "desc": "分页查询,Config,信息"
+        },
+        "ConfigItem": {
+            "name": "ConfigItem",
+            "fields": [
+                {
+                    "label": "optional",
+                    "type": "long",
+                    "name": "id",
+                    "desc": "id"
+                },
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "name",
+                    "desc": "配置名称"
+                },
+                {
+                    "label": "required",
+                    "type": "long",
+                    "name": "value",
+                    "desc": "配置值"
+                },
+                {
+                    "label": "optional",
+                    "type": "string",
+                    "name": "create_at",
+                    "desc": "创建时间"
+                },
+                {
+                    "label": "optional",
+                    "type": "string",
+                    "name": "update_at",
+                    "desc": "更新时间"
+                }
+            ],
+            "mode": "api",
+            "desc": "系统配置表"
+        },
+        "api_ConfigFormReq": {
+            "name": "ConfigFormReq",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "long",
+                    "name": "id",
+                    "desc": ""
+                }
+            ],
+            "mode": "api",
+            "desc": "请求,Config,信息"
+        },
+        "api_ConfigItem": {
+            "name": "ConfigItem",
+            "fields": [
+                {
+                    "label": "optional",
+                    "type": "long",
+                    "name": "id",
+                    "desc": "id"
+                },
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "name",
+                    "desc": "配置名称"
+                },
+                {
+                    "label": "required",
+                    "type": "long",
+                    "name": "value",
+                    "desc": "配置值"
+                },
+                {
+                    "label": "optional",
+                    "type": "string",
+                    "name": "create_at",
+                    "desc": "创建时间"
+                },
+                {
+                    "label": "optional",
+                    "type": "string",
+                    "name": "update_at",
+                    "desc": "更新时间"
+                }
+            ],
+            "mode": "api",
+            "desc": "系统配置表"
+        },
+        "ConfigNoneRsp": {
+            "name": "ConfigNoneRsp",
+            "fields": [],
+            "mode": "api",
+            "desc": "Config,无数据返回"
+        },
+        "api_ConfigDeleteReq": {
+            "name": "ConfigDeleteReq",
+            "fields": [
+                {
+                    "label": "repeated",
+                    "type": "long",
+                    "name": "ids",
+                    "desc": "记录id列表"
+                }
+            ],
+            "mode": "api",
+            "desc": "批量删除,Config,信息"
+        },
+        "HelloRsp": {
+            "name": "HelloRsp",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "greeting",
+                    "desc": "问候语"
+                }
+            ],
+            "mode": "api",
+            "desc": "测试响应"
+        },
+        "api_HelloReq": {
+            "name": "HelloReq",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "name",
+                    "desc": "用户名"
+                }
+            ],
+            "mode": "api",
+            "desc": "测试请求"
+        }
+    }
+}
