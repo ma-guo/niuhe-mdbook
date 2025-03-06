@@ -1,4 +1,5 @@
 # 公共类型定义
+
 class NoneResp()
     '''空响应'''
     pass

@@ -4,6 +4,7 @@ package consts
 
 import "github.com/ma-guo/niuhe"
 
+// 语言枚举类
 var Language struct {
 	*niuhe.StringConstGroup
 	ZH niuhe.StringConstItem `name:"中文" value:"zh"` // value: zh, name: 中文
