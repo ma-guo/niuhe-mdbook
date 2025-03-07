@@ -65,11 +65,13 @@
 
 <script setup lang="ts">
 
-import { setConfigAdd } from "@/api/demo/api";
-import { setConfigUpdate } from "@/api/demo/api";
-import { deleteConfigDelete } from "@/api/demo/api";
-import { getConfigForm } from "@/api/demo/api";
-import { getConfigPage } from "@/api/demo/api";
+import {
+  setConfigAdd,
+  setConfigUpdate,
+  deleteConfigDelete,
+  getConfigForm,
+  getConfigPage,
+ } from "@/api/demo/api";
 
 defineOptions({
   name: "config",
