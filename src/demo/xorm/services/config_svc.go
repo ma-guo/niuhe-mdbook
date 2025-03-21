@@ -71,11 +71,15 @@ func (svc *_ConfigSvc) Insert(rows ...*models.Config) error {
 }
 
 // 删除数据
-func (svc *_ConfigSvc) Delete(rows []*models.Config) error {
+func (svc *_ConfigSvc) Delete(rows ...*models.Config) error {
 	if len(rows) == 0 {
 		return nil
 	}
-	_, err := svc.dao().Delete(rows)
+	ids := make([]int64, 0)
+	for _, row := range rows {
+		ids = append(ids, row.Id)
+	}
+	_, err := svc.dao().Delete(ids, &models.Config{})
 	if err != nil {
 		niuhe.LogInfo("Delete Config error: %v", err)
 	}

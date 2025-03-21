@@ -169,7 +169,7 @@ const addRowRecord = async () => {
     if (rsp.result == 0) {
         ElMessage.success("添加成功");
         closeDialog();
-        resetQuery();
+        fetchPage();
     }
 }
 /** 修改记录 */
@@ -180,7 +180,7 @@ const updateRowRecord = async () => {
     if (rsp.result == 0) {
         ElMessage.success("修改成功");
         closeDialog();
-        resetQuery();
+        fetchPage();
     }
 }
 /** 关闭表单弹窗 */
@@ -215,7 +215,7 @@ function handleDelete(id: number) {
     state.loading = false;
     if (rsp.result == 0) {
       ElMessage.success("删除成功");
-      resetQuery();
+      fetchPage();
     }
   });
 }
@@ -237,7 +237,7 @@ const bantchDelete = () => {
 		if(rsp.result == 0) {
 			ElMessage.success("删除成功");
 		}
-		resetQuery();
+		fetchPage();
 	});
 };
 

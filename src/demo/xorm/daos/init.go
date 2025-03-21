@@ -80,9 +80,12 @@ func (dao *Dao) Update(id int64, row interface{}) (bool, error) {
 }
 
 // 删除记录
-// @param row 要删除的记录, 需为指针
-func (dao *Dao) Delete(rows interface{}) (bool, error) {
-	affected, err := dao.db().Delete(rows)
+// @param row 要删除的空表结构, 需为指针
+func (dao *Dao) Delete(ids []int64, row interface{}) (bool, error) {
+	if len(ids) == 0 {
+		return false, nil
+	}
+	affected, err := dao.db().Where("`id`", ids).Delete(row)
 	return affected > 0, err
 }
 

@@ -24,7 +24,6 @@ class HelloRsp(Message):
 class NihaoReq(HelloReq):
     '''你好请求'''
     mingzi = required.String(desc='名字')
-
 with services():
     GET('示例接口', '/api/hello/world/', HelloReq, HelloRsp)
     GET('协议文档', '/api/hello/docs/')

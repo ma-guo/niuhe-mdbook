@@ -100,7 +100,7 @@ func (v *Config) Delete_DELETE(c *niuhe.Context, req *protos.ConfigDeleteReq, rs
 	for _, row := range rowsMap {
 		rows = append(rows, row)
 	}
-	err = svc.Config().Delete(rows)
+	err = svc.Config().Delete(rows...)
 	if err != nil {
 		niuhe.LogInfo("%v", err)
 		return err
