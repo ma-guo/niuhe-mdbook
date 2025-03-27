@@ -4,6 +4,12 @@ package consts
 
 import "github.com/ma-guo/niuhe"
 
+// 错误类型
+var Errors struct {
+	*niuhe.IntConstGroup
+	NOT_FOUND niuhe.IntConstItem `name:"查找的数据不存在" value:"404"` // value: 404, name: 查找的数据不存在
+}
+
 // 语言枚举类
 var Language struct {
 	*niuhe.StringConstGroup
@@ -19,6 +25,7 @@ var LanguageType struct {
 }
 
 func init() {
+	niuhe.InitIntConstGroup(&Errors)
 	niuhe.InitConstGroup(&Language)
 	niuhe.InitIntConstGroup(&LanguageType)
 }

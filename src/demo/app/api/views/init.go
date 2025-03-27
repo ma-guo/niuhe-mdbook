@@ -22,6 +22,7 @@ func GetModule() *niuhe.Module {
 				Path:   route.Path,
 				Name:   route.Name,
 			})
+
 		}
 		coreViews.GetProtocol().AddRoute("", routes)
 
