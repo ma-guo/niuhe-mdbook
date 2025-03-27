@@ -2,8 +2,8 @@
 class ConfigItem():
 	'''系统配置表'''
 	id = optional.Long(desc='id')
-	name = required.StringField(desc='配置名称')
-	value = required.LongField(desc='配置值')
+	name = required.String(desc='配置名称')
+	value = required.Long(desc='配置值')
 	create_at = optional.String(desc='创建时间')
 	update_at = optional.String(desc='更新时间')
 
@@ -15,7 +15,7 @@ class ConfigPageReq():
 	'''分页查询 Config 信息'''
 	page = required.Integer(desc='页码')
 	size = required.Integer(desc='每页数量')
-	value = required.LongField(desc='配置值')
+	value = required.Long(desc='配置值')
 
 class ConfigPageRsp():
 	'''分页查询 Config 信息'''
