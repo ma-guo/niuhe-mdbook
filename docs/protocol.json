@@ -24,7 +24,7 @@
                     }
                 ],
                 "mode": "api",
-                "desc": "分页查询,Config,信息"
+                "desc": "分页查询 Config 信息"
             },
             "req": {
                 "name": "ConfigPageReq",
@@ -49,7 +49,7 @@
                     }
                 ],
                 "mode": "api",
-                "desc": "分页查询,Config,信息"
+                "desc": "分页查询 Config 信息"
             }
         },
         {
@@ -105,7 +105,7 @@
                     }
                 ],
                 "mode": "api",
-                "desc": "请求,Config,信息"
+                "desc": "请求 Config 信息"
             }
         },
         {
@@ -277,7 +277,7 @@
                 "name": "ConfigNoneRsp",
                 "fields": [],
                 "mode": "api",
-                "desc": "Config,无数据返回"
+                "desc": "Config 无数据返回"
             },
             "req": {
                 "name": "ConfigDeleteReq",
@@ -290,7 +290,7 @@
                     }
                 ],
                 "mode": "api",
-                "desc": "批量删除,Config,信息"
+                "desc": "批量删除 Config 信息"
             }
         },
         {
@@ -371,7 +371,7 @@
         }
     },
     "messages": {
-        "ConfigPageRsp": {
+        "api_ConfigPageRsp": {
             "name": "ConfigPageRsp",
             "fields": [
                 {
@@ -389,7 +389,7 @@
                 }
             ],
             "mode": "api",
-            "desc": "分页查询,Config,信息"
+            "desc": "分页查询 Config 信息"
         },
         "api_ConfigPageReq": {
             "name": "ConfigPageReq",
@@ -414,9 +414,9 @@
                 }
             ],
             "mode": "api",
-            "desc": "分页查询,Config,信息"
+            "desc": "分页查询 Config 信息"
         },
-        "ConfigItem": {
+        "api_ConfigItem": {
             "name": "ConfigItem",
             "fields": [
                 {
@@ -464,50 +464,13 @@
                 }
             ],
             "mode": "api",
-            "desc": "请求,Config,信息"
+            "desc": "请求 Config 信息"
         },
-        "api_ConfigItem": {
-            "name": "ConfigItem",
-            "fields": [
-                {
-                    "label": "optional",
-                    "type": "long",
-                    "name": "id",
-                    "desc": "id"
-                },
-                {
-                    "label": "required",
-                    "type": "string",
-                    "name": "name",
-                    "desc": "配置名称"
-                },
-                {
-                    "label": "required",
-                    "type": "long",
-                    "name": "value",
-                    "desc": "配置值"
-                },
-                {
-                    "label": "optional",
-                    "type": "string",
-                    "name": "create_at",
-                    "desc": "创建时间"
-                },
-                {
-                    "label": "optional",
-                    "type": "string",
-                    "name": "update_at",
-                    "desc": "更新时间"
-                }
-            ],
-            "mode": "api",
-            "desc": "系统配置表"
-        },
-        "ConfigNoneRsp": {
+        "api_ConfigNoneRsp": {
             "name": "ConfigNoneRsp",
             "fields": [],
             "mode": "api",
-            "desc": "Config,无数据返回"
+            "desc": "Config 无数据返回"
         },
         "api_ConfigDeleteReq": {
             "name": "ConfigDeleteReq",
@@ -520,9 +483,9 @@
                 }
             ],
             "mode": "api",
-            "desc": "批量删除,Config,信息"
+            "desc": "批量删除 Config 信息"
         },
-        "HelloRsp": {
+        "api_HelloRsp": {
             "name": "HelloRsp",
             "fields": [
                 {
