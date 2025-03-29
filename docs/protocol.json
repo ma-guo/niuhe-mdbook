@@ -330,9 +330,94 @@
             "url": "/api/hello/docs/",
             "mode": "api",
             "desc": "协议文档"
+        },
+        {
+            "method": "get",
+            "url": "/api/xxx/yyy/",
+            "mode": "api",
+            "desc": "RPC测试用例",
+            "rsp": {
+                "name": "XxxYyyRspMsg",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "open_id",
+                        "desc": "用户open_id"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "account_info",
+                        "desc": "账户信息"
+                    }
+                ],
+                "mode": "api",
+                "desc": "RPC测试用例返回参数"
+            },
+            "req": {
+                "name": "XxxYyyReqMsg",
+                "fields": [
+                    {
+                        "label": "optional",
+                        "type": "integer",
+                        "name": "country_code",
+                        "desc": "国家码"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "phone_number",
+                        "desc": "用户名"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "password",
+                        "desc": "密码"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "appid",
+                        "desc": "应用ID"
+                    }
+                ],
+                "mode": "api",
+                "desc": "RPC测试用例请求参数"
+            },
+            "codes": [
+                {
+                    "label": "optional",
+                    "type": "integer",
+                    "name": "ZH_CN",
+                    "desc": "简体中文",
+                    "value": "1"
+                },
+                {
+                    "label": "optional",
+                    "type": "integer",
+                    "name": "NOT_FOUND",
+                    "desc": "查找的数据不存在",
+                    "value": "404"
+                }
+            ]
         }
     ],
     "enums": {
+        "api_Errors": {
+            "mode": "api",
+            "name": "Errors",
+            "desc": "错误类型",
+            "values": [
+                {
+                    "name": "NOT_FOUND",
+                    "desc": "查找的数据不存在",
+                    "value": "404"
+                }
+            ],
+            "type": "integer"
+        },
         "api_Language": {
             "mode": "api",
             "name": "Language",
@@ -510,6 +595,56 @@
             ],
             "mode": "api",
             "desc": "测试请求"
+        },
+        "api_XxxYyyRspMsg": {
+            "name": "XxxYyyRspMsg",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "open_id",
+                    "desc": "用户open_id"
+                },
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "account_info",
+                    "desc": "账户信息"
+                }
+            ],
+            "mode": "api",
+            "desc": "RPC测试用例返回参数"
+        },
+        "api_XxxYyyReqMsg": {
+            "name": "XxxYyyReqMsg",
+            "fields": [
+                {
+                    "label": "optional",
+                    "type": "integer",
+                    "name": "country_code",
+                    "desc": "国家码"
+                },
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "phone_number",
+                    "desc": "用户名"
+                },
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "password",
+                    "desc": "密码"
+                },
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "appid",
+                    "desc": "应用ID"
+                }
+            ],
+            "mode": "api",
+            "desc": "RPC测试用例请求参数"
         }
     }
 }

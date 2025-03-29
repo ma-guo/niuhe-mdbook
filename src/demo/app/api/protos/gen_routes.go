@@ -1,6 +1,7 @@
 package protos
 
 import (
+	"demo/app/common/consts"
 	"github.com/ma-guo/niuhe"
 )
 
@@ -24,4 +25,8 @@ var RouteItems = []*RouteItem{
 	{Method: "DELETE", Path: "/api/config/delete/", Name: "删除 Config 信息"},
 	{Method: "GET", Path: "/api/hello/world/", Name: "示例接口"},
 	{Method: "GET", Path: "/api/hello/docs/", Name: "协议文档"},
+	{Method: "GET", Path: "/api/xxx/yyy/", Name: "RPC测试用例", Codes: []niuhe.IntConstItem{
+		consts.LanguageType.ZH_CN, // 1 - 简体中文
+		consts.Errors.NOT_FOUND,   // 404 - 查找的数据不存在,
+	}},
 }

@@ -48,3 +48,17 @@ type HelloReq struct {
 type HelloRsp struct {
 	Greeting string `json:"greeting" zpf_name:"greeting" zpf_reqd:"true"` //	问候语
 }
+
+// RPC测试用例请求参数
+type XxxYyyReqMsg struct {
+	CountryCode int    `json:"country_code" zpf_name:"country_code"`                 //	国家码
+	PhoneNumber string `json:"phone_number" zpf_name:"phone_number" zpf_reqd:"true"` //	用户名
+	Password    string `json:"password" zpf_name:"password" zpf_reqd:"true"`         //	密码
+	Appid       string `json:"appid" zpf_name:"appid" zpf_reqd:"true"`               //	应用ID
+}
+
+// RPC测试用例返回参数
+type XxxYyyRspMsg struct {
+	OpenId      string `json:"open_id" zpf_name:"open_id" zpf_reqd:"true"`           //	用户open_id
+	AccountInfo string `json:"account_info" zpf_name:"account_info" zpf_reqd:"true"` //	账户信息
+}

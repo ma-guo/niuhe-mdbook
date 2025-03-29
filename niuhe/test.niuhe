@@ -3,14 +3,15 @@
 include('comm.niuhe')
 include('api_config.niuhe')
 
-class Language(ConstGroup)
+class Language(ConstGroup):
     '''语言枚举类'''
     ZH = Item("zh", "中文")
     EN = Item("en", "英文")
 
-class LanguageType(ConstGroup)
+class LanguageType(ConstGroup):
     '''语言类型枚举'''
     ZH_CN = Item(1, "简体中文")
+    #dssdskdjs
     ZH_TW = Item(2, "繁体中文")
 
 class HelloReq():
@@ -21,20 +22,27 @@ class HelloRsp(Message):
    '''测试响应'''
     greeting = required.String(desc='问候语')
     
-class NihaoReq(HelloReq):
+class NihaoReq(comm.NoneResp):
     '''你好请求'''
     mingzi = required.String(desc='名字')
 with services():
     GET('示例接口', '/api/hello/world/', HelloReq, HelloRsp)
-    GET('协议文档', '/api/hello/docs/')
-    RPC('RPC测试用例', get='/api/xxx/yyy/').args(
+    GET('示例接口', '/api/hello/world/', HelloReq, wraps(HelloRsp))
+    GET('协议文档', '/api/hello/docs/', comm.NoneReq, comm.NoneRsp)
+    GET('协议文档', '/api/hello/docs/', comm.NoneReq, wraps(comm.NoneRsp))
+    Rpc('xxx', '/api/xxx/yyy/').returns(
+        open_id = required.String(desc='用户open_id'),
+        token = required.String(desc='token()'),
+        account_info = required.Struct(cls=AccountInfo),
+    )
+    Rpc('xxx', post='/api/xxx/yyy/').args(
         country_code    = optional.Integer(desc='国家码'),
         phone_number   = required.String(desc='用户名'),
         password    = required.String(desc='密码'),
         appid = required.String('应用ID'),
     ).returns(
         open_id = required.String(desc='用户open_id'),
-        account_info = required.String(cls=AccountInfo, desc='账户信息'),
+        account_info = required.Struct(cls=AccountInfo, desc='账户信息'),
     ).codes(
-        LanguageType.ZH_CN, comm.Errors.NOT_FOUND,
+        LanguageType.ZH_CN, LanguageType.ZH_TW
     )

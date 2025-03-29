@@ -7,6 +7,16 @@ declare namespace Demo {
 	// gen enum const
 
 	/**
+	* 错误类型 
+	*
+	* 成员包括 NOT_FOUND(404)
+	*/
+	enum Errors {
+		/** 查找的数据不存在 */
+		NOT_FOUND = 404,
+	}
+
+	/**
 	* 语言枚举类 
 	*
 	* 成员包括 ZH("zh"), EN("en")
@@ -118,6 +128,34 @@ declare namespace Demo {
 	interface HelloRsp {
 		/** 问候语 */
 		greeting: string;
+	}
+
+	/**
+	 * RPC测试用例请求参数
+	 *
+	 * 成员包括 country_code, phone_number, password, appid
+	 */
+	interface XxxYyyReqMsg {
+		/** 国家码 */
+		country_code: number;
+		/** 用户名 */
+		phone_number: string;
+		/** 密码 */
+		password: string;
+		/** 应用ID */
+		appid: string;
+	}
+
+	/**
+	 * RPC测试用例返回参数
+	 *
+	 * 成员包括 open_id, account_info
+	 */
+	interface XxxYyyRspMsg {
+		/** 用户open_id */
+		open_id: string;
+		/** 账户信息 */
+		account_info: string;
 	}
 
 }

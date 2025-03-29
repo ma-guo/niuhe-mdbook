@@ -83,3 +83,19 @@ export const getHelloWorld = (data: Demo.HelloReq): Promise<Rsp<Demo.HelloRsp>> 
 export const getHelloDocs = (data: Object): Promise<Object> => {
 	return ajax_get("/api/hello/docs/", data);
 };
+
+/**
+ * RPC测试用例
+ * @path GET /api/xxx/yyy/
+ * @param country_code number 国家码
+ * @param phone_number string 用户名
+ * @param password string 密码
+ * @param appid string 应用ID
+ * @return Demo.XxxYyyRspMsg
+  * @codes 错误码列表
+ * 1 (ZH_CN) 简体中文
+ * 404 (NOT_FOUND) 查找的数据不存在
+*/
+export const getXxxYyy = (data: Demo.XxxYyyReqMsg): Promise<Rsp<Demo.XxxYyyRspMsg>> => {
+	return ajax_get("/api/xxx/yyy/", data);
+};

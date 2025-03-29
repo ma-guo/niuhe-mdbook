@@ -514,6 +514,89 @@
                 ],
                 "pref": ""
             }
+        },
+        "/api/xxx/yyy/": {
+            "get": {
+                "description": "RPC测试用例",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "RPC测试用例",
+                "parameters": [
+                    {
+                        "name": "country_code",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "国家码"
+                    },
+                    {
+                        "name": "phone_number",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "用户名"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "密码"
+                    },
+                    {
+                        "name": "appid",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "应用ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "RPC测试用例返回参数",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "number",
+                                    "description": "返回状态码"
+                                },
+                                "data": {
+                                    "description": "成功时返回数据",
+                                    "$ref": "#/definitions/Demo.XxxYyyRspMsg"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "失败时的提示消息"
+                                }
+                            },
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {
+                                    "open_id": "",
+                                    "account_info": ""
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": "#/definitions/Demo.XxxYyyReqMsg"
+            }
         }
     },
     "definitions": {
@@ -645,6 +728,50 @@
             },
             "required": [
                 "greeting"
+            ]
+        },
+        "Demo.XxxYyyReqMsg": {
+            "type": "object",
+            "properties": {
+                "country_code": {
+                    "type": "integer",
+                    "description": "国家码"
+                },
+                "phone_number": {
+                    "type": "string",
+                    "description": "用户名"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "密码"
+                },
+                "appid": {
+                    "type": "string",
+                    "description": "应用ID"
+                }
+            },
+            "required": [
+                "country_code",
+                "phone_number",
+                "password",
+                "appid"
+            ]
+        },
+        "Demo.XxxYyyRspMsg": {
+            "type": "object",
+            "properties": {
+                "open_id": {
+                    "type": "string",
+                    "description": "用户open_id"
+                },
+                "account_info": {
+                    "type": "string",
+                    "description": "账户信息"
+                }
+            },
+            "required": [
+                "open_id",
+                "account_info"
             ]
         }
     },
