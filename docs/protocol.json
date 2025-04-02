@@ -295,7 +295,7 @@
         },
         {
             "method": "get",
-            "url": "/api/hello/world/",
+            "url": "/api/hellow/world/",
             "mode": "api",
             "desc": "示例接口",
             "rsp": {
@@ -327,9 +327,27 @@
         },
         {
             "method": "get",
-            "url": "/api/hello/docs/",
+            "url": "/api/hellow/docs/",
             "mode": "api",
-            "desc": "协议文档"
+            "desc": "协议文档",
+            "rsp": {
+                "name": "NoneRsp",
+                "fields": [],
+                "mode": "api",
+                "desc": "空响应"
+            },
+            "req": {
+                "name": "NoneReq",
+                "fields": [],
+                "mode": "api",
+                "desc": "空请求"
+            }
+        },
+        {
+            "method": "get",
+            "url": "/api/hellow/web/",
+            "mode": "api",
+            "desc": "网页示例"
         },
         {
             "method": "get",
@@ -359,15 +377,9 @@
                 "name": "XxxYyyReqMsg",
                 "fields": [
                     {
-                        "label": "optional",
-                        "type": "integer",
-                        "name": "country_code",
-                        "desc": "国家码"
-                    },
-                    {
                         "label": "required",
                         "type": "string",
-                        "name": "phone_number",
+                        "name": "name",
                         "desc": "用户名"
                     },
                     {
@@ -375,12 +387,6 @@
                         "type": "string",
                         "name": "password",
                         "desc": "密码"
-                    },
-                    {
-                        "label": "required",
-                        "type": "string",
-                        "name": "appid",
-                        "desc": "应用ID"
                     }
                 ],
                 "mode": "api",
@@ -596,6 +602,18 @@
             "mode": "api",
             "desc": "测试请求"
         },
+        "api_NoneRsp": {
+            "name": "NoneRsp",
+            "fields": [],
+            "mode": "api",
+            "desc": "空响应"
+        },
+        "api_NoneReq": {
+            "name": "NoneReq",
+            "fields": [],
+            "mode": "api",
+            "desc": "空请求"
+        },
         "api_XxxYyyRspMsg": {
             "name": "XxxYyyRspMsg",
             "fields": [
@@ -619,15 +637,9 @@
             "name": "XxxYyyReqMsg",
             "fields": [
                 {
-                    "label": "optional",
-                    "type": "integer",
-                    "name": "country_code",
-                    "desc": "国家码"
-                },
-                {
                     "label": "required",
                     "type": "string",
-                    "name": "phone_number",
+                    "name": "name",
                     "desc": "用户名"
                 },
                 {
@@ -635,12 +647,6 @@
                     "type": "string",
                     "name": "password",
                     "desc": "密码"
-                },
-                {
-                    "label": "required",
-                    "type": "string",
-                    "name": "appid",
-                    "desc": "应用ID"
                 }
             ],
             "mode": "api",

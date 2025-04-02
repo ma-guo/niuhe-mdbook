@@ -25,11 +25,10 @@ class HelloRsp(Message):
 class NihaoReq(comm.NoneResp):
     '''你好请求'''
     mingzi = required.String(desc='名字')
+    
 with services():
-    GET('示例接口', '/api/hello/world/', HelloReq, HelloRsp)
-    GET('示例接口', '/api/hello/world/', HelloReq, wraps(HelloRsp))
-    GET('协议文档', '/api/hello/docs/', comm.NoneReq, comm.NoneRsp)
-    GET('协议文档', '/api/hello/docs/', comm.NoneReq, wraps(comm.NoneRsp))
+    GET('示例接口', '/api/hellow/world/', HelloReq, HelloRsp)
+    GET('协议文档', '/api/hellow/docs/', comm.NoneReq, comm.NoneRsp)
     Rpc('xxx', '/api/xxx/yyy/').returns(
         open_id = required.String(desc='用户open_id'),
         token = required.String(desc='token()'),
@@ -42,7 +41,7 @@ with services():
         appid = required.String('应用ID'),
     ).returns(
         open_id = required.String(desc='用户open_id'),
-        account_info = required.Struct(cls=AccountInfo, desc='账户信息'),
+        account_info = required.Struct(cls=comm.NoneReq, desc='账户信息'),
     ).codes(
         LanguageType.ZH_CN, LanguageType.ZH_TW
     )

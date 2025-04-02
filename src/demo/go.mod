@@ -3,6 +3,8 @@ module demo
 go 1.23.6
 
 require (
+	github.com/flosch/pongo2 v0.0.0-20200913210552-0d938eb266f3
+	github.com/gin-gonic/gin v1.10.0
 	github.com/go-sql-driver/mysql v1.9.0
 	github.com/ma-guo/admin-core v0.1.7
 	github.com/ma-guo/niuhe v1.0.0
@@ -25,7 +27,6 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gammazero/toposort v0.1.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
-	github.com/gin-gonic/gin v1.10.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.20.0 // indirect

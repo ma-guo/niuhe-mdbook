@@ -13,7 +13,7 @@ type Xxx struct {
 }
 
 // RPC测试用例
-func (v *Xxx) Yyy(c *niuhe.Context, req *protos.XxxYyyReqMsg, rsp *protos.XxxYyyRspMsg) error {
+func (v *Xxx) Yyy_GET(c *niuhe.Context, req *protos.XxxYyyReqMsg, rsp *protos.XxxYyyRspMsg) error {
 	return niuhe.NewCommError(-1, "Not Implemented")
 }
 func init() {

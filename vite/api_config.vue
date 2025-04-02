@@ -20,7 +20,7 @@
       <el-table ref="dataTableRef" v-loading="state.loading" :data="configItems" highlight-current-row border
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" align="center" />
-        <el-table-column label="ID" prop="id" align="center" />
+        <el-table-column label="ID" prop="id" align="center" width="70"/>
         <el-table-column label="配置名称" prop="name" align="center" />
 <el-table-column label="配置值" prop="value" align="center" />
         <el-table-column fixed="right" label="操作" width="140" align="center">
@@ -46,10 +46,10 @@
           <el-input v-model="formData.id" disabled placeholder="" />
         </el-form-item>
         <el-form-item prop="name" label="配置名称">
-          <el-input v-model="formData.name" placeholder="配置名称" clearable />
+          <el-input v-model="formData.name" placeholder="配置名称" clearable  />
         </el-form-item>
 <el-form-item prop="value" label="配置值">
-          <el-input v-model="formData.value" placeholder="配置值" clearable />
+          <el-input v-model="formData.value" placeholder="配置值" clearable type="number" />
         </el-form-item>
       </el-form>
 
@@ -82,6 +82,7 @@ const queryFormRef = ref(ElForm);
 
 const configFormRef = ref(ElForm);
 const configItems = ref<Demo.ConfigItem[]>();
+
 const state = reactive({
   loading: false,
   total: 0,
@@ -106,7 +107,7 @@ value: 0,
 
 // 根据需要添加校验规则
 const rules = reactive({
-//   name: [{ required: true, message: "本字段必填", trigger: "blur" }],
+ value: [{required: true, message: "本字段必填", trigger: "blur"}]
 });
 
 /** 查询 */
@@ -244,4 +245,5 @@ const bantchDelete = () => {
 onMounted(() => {
   fetchPage();
 });
+
 </script>

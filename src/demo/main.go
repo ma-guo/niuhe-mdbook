@@ -5,6 +5,7 @@ package main
 import (
 	apiViews "demo/app/api/views"
 	"demo/config"
+	"demo/utils/pongo2gin"
 	"fmt"
 	"os"
 
@@ -29,6 +30,8 @@ func (baseBoot) BeforeBoot(svr *niuhe.Server) {}
 
 func (baseBoot) RegisterModules(svr *niuhe.Server) {
 	svr.RegisterModule(apiViews.GetModule())
+	svr.GetGinEngine().HTMLRender = pongo2gin.Default()
+	svr.GetGinEngine().Static("/static", "static")
 
 }
 

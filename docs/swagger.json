@@ -418,7 +418,7 @@
                 "pref": "#/definitions/Demo.ConfigDeleteReq"
             }
         },
-        "/api/hello/world/": {
+        "/api/hellow/world/": {
             "get": {
                 "description": "示例接口",
                 "security": [
@@ -479,7 +479,7 @@
                 "pref": "#/definitions/Demo.HelloReq"
             }
         },
-        "/api/hello/docs/": {
+        "/api/hellow/docs/": {
             "get": {
                 "description": "协议文档",
                 "security": [
@@ -489,6 +489,57 @@
                 ],
                 "tags": [],
                 "summary": "协议文档",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "空响应",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "number",
+                                    "description": "返回状态码"
+                                },
+                                "data": {
+                                    "description": "成功时返回数据",
+                                    "$ref": "#/definitions/Demo.NoneRsp"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "失败时的提示消息"
+                                }
+                            },
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {}
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": "#/definitions/Demo.NoneReq"
+            }
+        },
+        "/api/hellow/web/": {
+            "get": {
+                "description": "网页示例",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "网页示例",
                 "parameters": [],
                 "responses": {
                     "200": {
@@ -527,14 +578,7 @@
                 "summary": "RPC测试用例",
                 "parameters": [
                     {
-                        "name": "country_code",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "description": "国家码"
-                    },
-                    {
-                        "name": "phone_number",
+                        "name": "name",
                         "in": "query",
                         "required": true,
                         "type": "string",
@@ -546,13 +590,6 @@
                         "required": true,
                         "type": "string",
                         "description": "密码"
-                    },
-                    {
-                        "name": "appid",
-                        "in": "query",
-                        "required": true,
-                        "type": "string",
-                        "description": "应用ID"
                     }
                 ],
                 "responses": {
@@ -730,31 +767,31 @@
                 "greeting"
             ]
         },
+        "Demo.NoneReq": {
+            "type": "object",
+            "properties": {},
+            "required": []
+        },
+        "Demo.NoneRsp": {
+            "type": "object",
+            "properties": {},
+            "required": []
+        },
         "Demo.XxxYyyReqMsg": {
             "type": "object",
             "properties": {
-                "country_code": {
-                    "type": "integer",
-                    "description": "国家码"
-                },
-                "phone_number": {
+                "name": {
                     "type": "string",
                     "description": "用户名"
                 },
                 "password": {
                     "type": "string",
                     "description": "密码"
-                },
-                "appid": {
-                    "type": "string",
-                    "description": "应用ID"
                 }
             },
             "required": [
-                "country_code",
-                "phone_number",
-                "password",
-                "appid"
+                "name",
+                "password"
             ]
         },
         "Demo.XxxYyyRspMsg": {

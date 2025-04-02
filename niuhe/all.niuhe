@@ -25,13 +25,12 @@ class NihaoReq(HelloReq):
     '''你好请求'''
     mingzi = required.String(desc='名字')
 with services():
-    GET('示例接口', '/api/hello/world/', HelloReq, HelloRsp)
-    GET('协议文档', '/api/hello/docs/')
+    GET('示例接口', '/api/hellow/world/', HelloReq, HelloRsp)
+    GET('协议文档', '/api/hellow/docs/', comm.NoneReq, comm.NoneRsp)
+    GET('网页示例', '/api/hellow/web/')
     RPC('RPC测试用例', get='/api/xxx/yyy/').args(
-        country_code    = optional.Integer(desc='国家码'),
-        phone_number   = required.String(desc='用户名'),
+        name   = required.String(desc='用户名'),
         password    = required.String(desc='密码'),
-        appid = required.String('应用ID'),
     ).returns(
         open_id = required.String(desc='用户open_id'),
         account_info = required.String(cls=AccountInfo, desc='账户信息'),
