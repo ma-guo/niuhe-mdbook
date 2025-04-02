@@ -7,5 +7,5 @@
   tsoptional: false, // langs 支持 "ts" 时 optional 是否添加?, 默认为 false
   showlog: false, // 为生成代码时是否生成日志, 默认为不打印日志, 打开时，日志在项目目录下 niuhe.log 中, 生成错误时可进行排查
   endcmd: [], // 为生成代码后执行的命令, 默认为空, 一般第一个为命令名, 后续为参数, 如: go mod tidy 则定义为 ["go","mod","tidy"]
-  fire: true,
+  fire: true, // 生成代码后显示通知为烟花效果
 }
