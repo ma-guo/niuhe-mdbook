@@ -7,15 +7,16 @@ import (
 	"net/http"
 	"path"
 
-	"github.com/flosch/pongo2"
+	"github.com/flosch/pongo2/v4"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/render"
 )
 
 // RenderOptions is used to configure the renderer.
 type RenderOptions struct {
-	TemplateDir string
-	ContentType string
+	TemplateDir   string
+	ContentType   string
+	AlwaysNoCache bool
 }
 
 // Pongo2Render is a custom Gin template renderer using Pongo2.
@@ -35,8 +36,9 @@ func New(options RenderOptions) *Pongo2Render {
 // Default creates a Pongo2Render instance with default options.
 func Default() *Pongo2Render {
 	return New(RenderOptions{
-		TemplateDir: "templates",
-		ContentType: "text/html; charset=utf-8",
+		TemplateDir:   "templates",
+		ContentType:   "text/html; charset=utf-8",
+		AlwaysNoCache: false,
 	})
 }
 
@@ -47,7 +49,7 @@ func (p Pongo2Render) Instance(name string, data interface{}) render.Render {
 	filename := path.Join(p.Options.TemplateDir, name)
 
 	// always read template files from disk if in debug mode, use cache otherwise.
-	if gin.Mode() == "debug" {
+	if gin.Mode() == "debug" || p.Options.AlwaysNoCache == true {
 		template = pongo2.Must(pongo2.FromFile(filename))
 	} else {
 		template = pongo2.Must(pongo2.FromCache(filename))

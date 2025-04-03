@@ -5,9 +5,10 @@ package main
 import (
 	apiViews "demo/app/api/views"
 	"demo/config"
-	"demo/utils/pongo2gin"
 	"fmt"
 	"os"
+
+	"gitee.com/cnmade/pongo2gin"
 
 	adminBoot "github.com/ma-guo/admin-core/boot"
 	"github.com/ma-guo/niuhe"
@@ -32,7 +33,6 @@ func (baseBoot) RegisterModules(svr *niuhe.Server) {
 	svr.RegisterModule(apiViews.GetModule())
 	svr.GetGinEngine().HTMLRender = pongo2gin.Default()
 	svr.GetGinEngine().Static("/static", "static")
-
 }
 
 func (baseBoot) Serve(svr *niuhe.Server) {
