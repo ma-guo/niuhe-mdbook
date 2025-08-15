@@ -1,11 +1,48 @@
 {
     "app": "demo",
+    "gomod": "demo",
+    "modes": [
+        "api"
+    ],
     "routes": [
         {
             "method": "get",
             "url": "/api/config/page/",
             "mode": "api",
-            "desc": "分页查询获取 Config 信息",
+            "view": "config",
+            "name": "page",
+            "desc": "分页查询获取Config信息",
+            "req": {
+                "name": "ConfigPageReq",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "integer",
+                        "name": "page",
+                        "desc": "页码"
+                    },
+                    {
+                        "label": "required",
+                        "type": "integer",
+                        "name": "size",
+                        "desc": "每页数量"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "name",
+                        "desc": "配置名称"
+                    },
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "value",
+                        "desc": "配置值"
+                    }
+                ],
+                "mode": "api",
+                "desc": "分页查询Config信息"
+            },
             "rsp": {
                 "name": "ConfigPageRsp",
                 "fields": [
@@ -24,76 +61,16 @@
                     }
                 ],
                 "mode": "api",
-                "desc": "分页查询 Config 信息"
-            },
-            "req": {
-                "name": "ConfigPageReq",
-                "fields": [
-                    {
-                        "label": "required",
-                        "type": "integer",
-                        "name": "page",
-                        "desc": "页码"
-                    },
-                    {
-                        "label": "required",
-                        "type": "integer",
-                        "name": "size",
-                        "desc": "每页数量"
-                    },
-                    {
-                        "label": "required",
-                        "type": "long",
-                        "name": "value",
-                        "desc": "配置值"
-                    }
-                ],
-                "mode": "api",
-                "desc": "分页查询 Config 信息"
+                "desc": "分页查询Config信息"
             }
         },
         {
             "method": "get",
             "url": "/api/config/form/",
             "mode": "api",
-            "desc": "查询获取 Config 信息",
-            "rsp": {
-                "name": "ConfigItem",
-                "fields": [
-                    {
-                        "label": "optional",
-                        "type": "long",
-                        "name": "id",
-                        "desc": "id"
-                    },
-                    {
-                        "label": "required",
-                        "type": "string",
-                        "name": "name",
-                        "desc": "配置名称"
-                    },
-                    {
-                        "label": "required",
-                        "type": "long",
-                        "name": "value",
-                        "desc": "配置值"
-                    },
-                    {
-                        "label": "optional",
-                        "type": "string",
-                        "name": "create_at",
-                        "desc": "创建时间"
-                    },
-                    {
-                        "label": "optional",
-                        "type": "string",
-                        "name": "update_at",
-                        "desc": "更新时间"
-                    }
-                ],
-                "mode": "api",
-                "desc": "系统配置表"
-            },
+            "view": "config",
+            "name": "form",
+            "desc": "查询获取Config信息",
             "req": {
                 "name": "ConfigFormReq",
                 "fields": [
@@ -105,14 +82,8 @@
                     }
                 ],
                 "mode": "api",
-                "desc": "请求 Config 信息"
-            }
-        },
-        {
-            "method": "post",
-            "url": "/api/config/add/",
-            "mode": "api",
-            "desc": "添加 Config 信息",
+                "desc": "请求Config信息"
+            },
             "rsp": {
                 "name": "ConfigItem",
                 "fields": [
@@ -149,8 +120,53 @@
                 ],
                 "mode": "api",
                 "desc": "系统配置表"
-            },
+            }
+        },
+        {
+            "method": "post",
+            "url": "/api/config/add/",
+            "mode": "api",
+            "view": "config",
+            "name": "add",
+            "desc": "添加Config信息",
             "req": {
+                "name": "ConfigItem",
+                "fields": [
+                    {
+                        "label": "optional",
+                        "type": "long",
+                        "name": "id",
+                        "desc": "id"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "name",
+                        "desc": "配置名称"
+                    },
+                    {
+                        "label": "required",
+                        "type": "long",
+                        "name": "value",
+                        "desc": "配置值"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "create_at",
+                        "desc": "创建时间"
+                    },
+                    {
+                        "label": "optional",
+                        "type": "string",
+                        "name": "update_at",
+                        "desc": "更新时间"
+                    }
+                ],
+                "mode": "api",
+                "desc": "系统配置表"
+            },
+            "rsp": {
                 "name": "ConfigItem",
                 "fields": [
                     {
@@ -192,8 +208,10 @@
             "method": "post",
             "url": "/api/config/update/",
             "mode": "api",
-            "desc": "更新 Config 信息",
-            "rsp": {
+            "view": "config",
+            "name": "update",
+            "desc": "更新Config信息",
+            "req": {
                 "name": "ConfigItem",
                 "fields": [
                     {
@@ -230,7 +248,7 @@
                 "mode": "api",
                 "desc": "系统配置表"
             },
-            "req": {
+            "rsp": {
                 "name": "ConfigItem",
                 "fields": [
                     {
@@ -272,13 +290,9 @@
             "method": "delete",
             "url": "/api/config/delete/",
             "mode": "api",
-            "desc": "删除 Config 信息",
-            "rsp": {
-                "name": "ConfigNoneRsp",
-                "fields": [],
-                "mode": "api",
-                "desc": "Config 无数据返回"
-            },
+            "view": "config",
+            "name": "delete",
+            "desc": "删除Config信息",
             "req": {
                 "name": "ConfigDeleteReq",
                 "fields": [
@@ -290,27 +304,22 @@
                     }
                 ],
                 "mode": "api",
-                "desc": "批量删除 Config 信息"
+                "desc": "批量删除Config信息"
+            },
+            "rsp": {
+                "name": "ConfigNoneRsp",
+                "fields": [],
+                "mode": "api",
+                "desc": "Config无数据返回"
             }
         },
         {
             "method": "get",
             "url": "/api/hellow/world/",
             "mode": "api",
+            "view": "hellow",
+            "name": "world",
             "desc": "示例接口",
-            "rsp": {
-                "name": "HelloRsp",
-                "fields": [
-                    {
-                        "label": "required",
-                        "type": "string",
-                        "name": "greeting",
-                        "desc": "问候语"
-                    }
-                ],
-                "mode": "api",
-                "desc": "测试响应"
-            },
             "req": {
                 "name": "HelloReq",
                 "fields": [
@@ -323,56 +332,56 @@
                 ],
                 "mode": "api",
                 "desc": "测试请求"
+            },
+            "rsp": {
+                "name": "HelloRsp",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "greeting",
+                        "desc": "问候语"
+                    }
+                ],
+                "mode": "api",
+                "desc": "测试响应"
             }
         },
         {
             "method": "get",
             "url": "/api/hellow/docs/",
             "mode": "api",
+            "view": "hellow",
+            "name": "docs",
             "desc": "协议文档",
-            "rsp": {
-                "name": "NoneRsp",
-                "fields": [],
-                "mode": "api",
-                "desc": "空响应"
-            },
             "req": {
                 "name": "NoneReq",
                 "fields": [],
                 "mode": "api",
                 "desc": "空请求"
+            },
+            "rsp": {
+                "name": "NoneRsp",
+                "fields": [],
+                "mode": "api",
+                "desc": "空响应"
             }
         },
         {
             "method": "get",
             "url": "/api/hellow/web/",
             "mode": "api",
+            "view": "hellow",
+            "name": "web",
             "desc": "网页示例"
         },
         {
             "method": "get",
             "url": "/api/xxx/yyy/",
             "mode": "api",
+            "view": "xxx",
+            "name": "yyy",
             "desc": "RPC测试用例",
-            "rsp": {
-                "name": "XxxYyyRspMsg",
-                "fields": [
-                    {
-                        "label": "required",
-                        "type": "string",
-                        "name": "open_id",
-                        "desc": "用户open_id"
-                    },
-                    {
-                        "label": "required",
-                        "type": "string",
-                        "name": "account_info",
-                        "desc": "账户信息"
-                    }
-                ],
-                "mode": "api",
-                "desc": "RPC测试用例返回参数"
-            },
             "req": {
                 "name": "XxxYyyReqMsg",
                 "fields": [
@@ -392,20 +401,41 @@
                 "mode": "api",
                 "desc": "RPC测试用例请求参数"
             },
+            "rsp": {
+                "name": "XxxYyyRspMsg",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "open_id",
+                        "desc": "用户open_id"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "account_info",
+                        "desc": "账户信息"
+                    }
+                ],
+                "mode": "api",
+                "desc": "RPC测试用例返回参数"
+            },
             "codes": [
                 {
                     "label": "optional",
                     "type": "integer",
                     "name": "ZH_CN",
                     "desc": "简体中文",
-                    "value": "1"
+                    "value": "1",
+                    "ref": "LanguageType"
                 },
                 {
                     "label": "optional",
                     "type": "integer",
                     "name": "NOT_FOUND",
                     "desc": "查找的数据不存在",
-                    "value": "404"
+                    "value": "404",
+                    "ref": "Errors"
                 }
             ]
         }
@@ -462,26 +492,6 @@
         }
     },
     "messages": {
-        "api_ConfigPageRsp": {
-            "name": "ConfigPageRsp",
-            "fields": [
-                {
-                    "label": "required",
-                    "type": "long",
-                    "name": "total",
-                    "desc": "总数"
-                },
-                {
-                    "label": "repeated",
-                    "type": "message",
-                    "name": "items",
-                    "desc": "Config信息",
-                    "ref": "ConfigItem"
-                }
-            ],
-            "mode": "api",
-            "desc": "分页查询 Config 信息"
-        },
         "api_ConfigPageReq": {
             "name": "ConfigPageReq",
             "fields": [
@@ -499,13 +509,19 @@
                 },
                 {
                     "label": "required",
+                    "type": "string",
+                    "name": "name",
+                    "desc": "配置名称"
+                },
+                {
+                    "label": "required",
                     "type": "long",
                     "name": "value",
                     "desc": "配置值"
                 }
             ],
             "mode": "api",
-            "desc": "分页查询 Config 信息"
+            "desc": "分页查询Config信息"
         },
         "api_ConfigItem": {
             "name": "ConfigItem",
@@ -544,6 +560,26 @@
             "mode": "api",
             "desc": "系统配置表"
         },
+        "api_ConfigPageRsp": {
+            "name": "ConfigPageRsp",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "long",
+                    "name": "total",
+                    "desc": "总数"
+                },
+                {
+                    "label": "repeated",
+                    "type": "message",
+                    "name": "items",
+                    "desc": "Config信息",
+                    "ref": "ConfigItem"
+                }
+            ],
+            "mode": "api",
+            "desc": "分页查询Config信息"
+        },
         "api_ConfigFormReq": {
             "name": "ConfigFormReq",
             "fields": [
@@ -555,13 +591,7 @@
                 }
             ],
             "mode": "api",
-            "desc": "请求 Config 信息"
-        },
-        "api_ConfigNoneRsp": {
-            "name": "ConfigNoneRsp",
-            "fields": [],
-            "mode": "api",
-            "desc": "Config 无数据返回"
+            "desc": "请求Config信息"
         },
         "api_ConfigDeleteReq": {
             "name": "ConfigDeleteReq",
@@ -574,20 +604,13 @@
                 }
             ],
             "mode": "api",
-            "desc": "批量删除 Config 信息"
+            "desc": "批量删除Config信息"
         },
-        "api_HelloRsp": {
-            "name": "HelloRsp",
-            "fields": [
-                {
-                    "label": "required",
-                    "type": "string",
-                    "name": "greeting",
-                    "desc": "问候语"
-                }
-            ],
+        "api_ConfigNoneRsp": {
+            "name": "ConfigNoneRsp",
+            "fields": [],
             "mode": "api",
-            "desc": "测试响应"
+            "desc": "Config无数据返回"
         },
         "api_HelloReq": {
             "name": "HelloReq",
@@ -602,11 +625,18 @@
             "mode": "api",
             "desc": "测试请求"
         },
-        "api_NoneRsp": {
-            "name": "NoneRsp",
-            "fields": [],
+        "api_HelloRsp": {
+            "name": "HelloRsp",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "greeting",
+                    "desc": "问候语"
+                }
+            ],
             "mode": "api",
-            "desc": "空响应"
+            "desc": "测试响应"
         },
         "api_NoneReq": {
             "name": "NoneReq",
@@ -614,24 +644,11 @@
             "mode": "api",
             "desc": "空请求"
         },
-        "api_XxxYyyRspMsg": {
-            "name": "XxxYyyRspMsg",
-            "fields": [
-                {
-                    "label": "required",
-                    "type": "string",
-                    "name": "open_id",
-                    "desc": "用户open_id"
-                },
-                {
-                    "label": "required",
-                    "type": "string",
-                    "name": "account_info",
-                    "desc": "账户信息"
-                }
-            ],
+        "api_NoneRsp": {
+            "name": "NoneRsp",
+            "fields": [],
             "mode": "api",
-            "desc": "RPC测试用例返回参数"
+            "desc": "空响应"
         },
         "api_XxxYyyReqMsg": {
             "name": "XxxYyyReqMsg",
@@ -651,6 +668,25 @@
             ],
             "mode": "api",
             "desc": "RPC测试用例请求参数"
+        },
+        "api_XxxYyyRspMsg": {
+            "name": "XxxYyyRspMsg",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "open_id",
+                    "desc": "用户open_id"
+                },
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "account_info",
+                    "desc": "账户信息"
+                }
+            ],
+            "mode": "api",
+            "desc": "RPC测试用例返回参数"
         }
     }
 }

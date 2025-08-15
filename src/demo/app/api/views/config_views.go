@@ -18,7 +18,7 @@ type Config struct {
 func (v *Config) Page_GET(c *niuhe.Context, req *protos.ConfigPageReq, rsp *protos.ConfigPageRsp) error {
 	svc := services.NewSvc()
 	defer svc.Close()
-	rows, total, err := svc.Config().GetPage(req.Page, req.Size, req.Value)
+	rows, total, err := svc.Config().GetPage(req.Page, req.Size, req.Name, req.Value)
 	if err != nil {
 		niuhe.LogInfo("%v", err)
 		return err

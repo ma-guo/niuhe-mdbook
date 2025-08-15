@@ -11,27 +11,27 @@ import (
 
 type _Gen_Config struct{}
 
-// 分页查询获取 Config 信息
+// 分页查询获取Config信息
 func (v *_Gen_Config) Page_GET(c *niuhe.Context, req *protos.ConfigPageReq, rsp *protos.ConfigPageRsp) error {
 	return niuhe.NewCommError(-1, "Not Implemented")
 }
 
-// 查询获取 Config 信息
+// 查询获取Config信息
 func (v *_Gen_Config) Form_GET(c *niuhe.Context, req *protos.ConfigFormReq, rsp *protos.ConfigItem) error {
 	return niuhe.NewCommError(-1, "Not Implemented")
 }
 
-// 添加 Config 信息
+// 添加Config信息
 func (v *_Gen_Config) Add_POST(c *niuhe.Context, req *protos.ConfigItem, rsp *protos.ConfigItem) error {
 	return niuhe.NewCommError(-1, "Not Implemented")
 }
 
-// 更新 Config 信息
+// 更新Config信息
 func (v *_Gen_Config) Update_POST(c *niuhe.Context, req *protos.ConfigItem, rsp *protos.ConfigItem) error {
 	return niuhe.NewCommError(-1, "Not Implemented")
 }
 
-// 删除 Config 信息
+// 删除Config信息
 func (v *_Gen_Config) Delete_DELETE(c *niuhe.Context, req *protos.ConfigDeleteReq, rsp *protos.ConfigNoneRsp) error {
 	return niuhe.NewCommError(-1, "Not Implemented")
 }

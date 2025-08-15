@@ -30,9 +30,10 @@ func (dao *_ConfigDao) GetByIds(ids ...int64) ([]*models.Config, error) {
 }
 
 // 分页获取数据
-func (dao *_ConfigDao) GetPage(page, size int, value int64) ([]*models.Config, int64, error) {
+func (dao *_ConfigDao) GetPage(page, size int, name string, value int64) ([]*models.Config, int64, error) {
 	rows := make([]*models.Config, 0)
 	session := dao.db()
+	dao.Like(session, "`name`", name)
 	dao.Like(session, "`value`", value)
 	dao.Limit(session, page, size)
 	total, err := session.Desc("`id`").FindAndCount(&rows)

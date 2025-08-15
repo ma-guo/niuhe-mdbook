@@ -6,10 +6,11 @@ import { ajax_get, ajax_post, ajax_any } from "./request";
 
 
 /**
- * 分页查询获取 Config 信息
+ * 分页查询获取Config信息
  * @path GET /api/config/page/
  * @param page number 页码
  * @param size number 每页数量
+ * @param name string 配置名称
  * @param value number 配置值
  * @return Demo.ConfigPageRsp
  */
@@ -18,9 +19,9 @@ export const getConfigPage = (data: Demo.ConfigPageReq): Promise<Rsp<Demo.Config
 };
 
 /**
- * 查询获取 Config 信息
+ * 查询获取Config信息
  * @path GET /api/config/form/
- * @param id number 
+ * @param id number
  * @return Demo.ConfigItem
  */
 export const getConfigForm = (data: Demo.ConfigFormReq): Promise<Rsp<Demo.ConfigItem>> => {
@@ -28,7 +29,7 @@ export const getConfigForm = (data: Demo.ConfigFormReq): Promise<Rsp<Demo.Config
 };
 
 /**
- * 添加 Config 信息
+ * 添加Config信息
  * @path POST /api/config/add/
  * @param id number id
  * @param name string 配置名称
@@ -42,7 +43,7 @@ export const setConfigAdd = (data: Demo.ConfigItem): Promise<Rsp<Demo.ConfigItem
 };
 
 /**
- * 更新 Config 信息
+ * 更新Config信息
  * @path POST /api/config/update/
  * @param id number id
  * @param name string 配置名称
@@ -56,7 +57,7 @@ export const setConfigUpdate = (data: Demo.ConfigItem): Promise<Rsp<Demo.ConfigI
 };
 
 /**
- * 删除 Config 信息
+ * 删除Config信息
  * @path DELETE /api/config/delete/
  * @param ids number 记录id列表
  * @return Demo.ConfigNoneRsp
@@ -100,8 +101,8 @@ export const getHellowWeb = (data: Object): Promise<Object> => {
  * @param password string 密码
  * @return Demo.XxxYyyRspMsg
   * @codes 错误码列表
- * 1 (ZH_CN) 简体中文
- * 404 (NOT_FOUND) 查找的数据不存在
+ * 1 (LanguageType.ZH_CN) 简体中文
+ * 404 (Errors.NOT_FOUND) 查找的数据不存在
 */
 export const getXxxYyy = (data: Demo.XxxYyyReqMsg): Promise<Rsp<Demo.XxxYyyRspMsg>> => {
 	return ajax_get("/api/xxx/yyy/", data);

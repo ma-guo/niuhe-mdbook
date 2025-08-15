@@ -2,7 +2,10 @@
   <div class="app-container">
     <div class="search-container">
       <el-form ref="queryFormRef" :model="queryParams" :inline="true">
-        <el-form-item prop="value" label="配置值">
+        <el-form-item prop="name" label="配置名称">
+          <el-input v-model="queryParams.name" placeholder="配置名称" clearable @keyup.enter="fetchPage" />
+        </el-form-item>
+<el-form-item prop="value" label="配置值">
           <el-input v-model="queryParams.value" placeholder="配置值" clearable @keyup.enter="fetchPage" />
         </el-form-item>
         <el-form-item>
@@ -13,16 +16,16 @@
     </div>
 
     <el-card shadow="never" class="table-container">
-        <template #header>
-            <el-button @click="openDialogWithAdd()" type="success"><i-ep-plus />新增</el-button>
-            <el-button type="danger" :disabled="state.ids.length === 0" @click="bantchDelete()"><i-ep-delete />删除</el-button>
-        </template>
+      <template #header>
+        <el-button @click="openDialogWithAdd()" type="success"><i-ep-plus />新增</el-button>
+        <el-button type="danger" :disabled="state.ids.length === 0" @click="bantchDelete()"><i-ep-delete />删除</el-button>
+      </template>
       <el-table ref="dataTableRef" v-loading="state.loading" :data="configItems" highlight-current-row border
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" align="center" />
         <el-table-column label="ID" prop="id" align="center" width="70"/>
         <el-table-column label="配置名称" prop="name" align="center" />
-<el-table-column label="配置值" prop="value" align="center" />
+		<el-table-column label="配置值" prop="value" align="center" />
         <el-table-column fixed="right" label="操作" width="140" align="center">
           <template #default="{row}">
             <el-button type="primary" size="small" link @click="openDialogWithEdit(row.id)">
@@ -42,14 +45,14 @@
     <!-- Config 表单弹窗 -->
     <el-dialog v-model="state.dialogVisible" :title="state.dialogTitle" @close="closeDialog">
       <el-form ref="configFormRef" :model="formData" :rules="rules" label-width="100px">
-        <el-form-item label="ID" prop="id" v-if="formData.id>0">
+        <el-form-item label="ID" prop="id" v-if="formData.id > 0">
           <el-input v-model="formData.id" disabled placeholder="" />
         </el-form-item>
         <el-form-item prop="name" label="配置名称">
-          <el-input v-model="formData.name" placeholder="配置名称" clearable  />
+          <el-input v-model="formData.name" placeholder="配置名称" clearable type="textarea"/>
         </el-form-item>
-<el-form-item prop="value" label="配置值">
-          <el-input v-model="formData.value" placeholder="配置值" clearable type="number" />
+		<el-form-item prop="value" label="配置值">
+          <el-input v-model="formData.value" placeholder="配置值" clearable type="number"/>
         </el-form-item>
       </el-form>
 
@@ -94,7 +97,8 @@ const state = reactive({
 const queryParams = reactive<Demo.ConfigPageReq>({
   page: 1,
   size: 10,
-  value: 0,
+  name: "",
+value: 0,
 });
 
 const formData = reactive<Demo.ConfigItem>({
@@ -107,7 +111,8 @@ value: 0,
 
 // 根据需要添加校验规则
 const rules = reactive({
- value: [{required: true, message: "本字段必填", trigger: "blur"}]
+ name: [{required: true, message: "本字段必填", trigger: "blur"}],
+value: [{required: true, message: "本字段必填", trigger: "blur"}]
 });
 
 /** 查询 */
@@ -135,13 +140,13 @@ function handleSelectionChange(selection: any) {
 /** 打开添加弹窗 */
 function openDialogWithAdd() {
   state.dialogVisible = true;
-  state.dialogTitle = "添加Config";
+  state.dialogTitle = "添加Config记录";
   resetForm();
 }
 /** 打开编辑弹窗 */
 const openDialogWithEdit  = async (roleId: number) => {
   state.dialogVisible = true;
-  state.dialogTitle = "修改Config";
+  state.dialogTitle = "修改Config记录";
   state.loading = true;
   const rsp = await getConfigForm({ id: roleId });
   state.loading = false;

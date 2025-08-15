@@ -73,7 +73,7 @@ github.com/gammazero/toposort
 # github.com/gin-contrib/sse v0.1.0
 ## explicit; go 1.12
 github.com/gin-contrib/sse
-# github.com/gin-gonic/gin v1.10.0
+# github.com/gin-gonic/gin v1.10.1
 ## explicit; go 1.20
 github.com/gin-gonic/gin
 github.com/gin-gonic/gin/binding
@@ -90,8 +90,8 @@ github.com/go-playground/universal-translator
 # github.com/go-playground/validator/v10 v10.20.0
 ## explicit; go 1.18
 github.com/go-playground/validator/v10
-# github.com/go-sql-driver/mysql v1.9.0
-## explicit; go 1.21
+# github.com/go-sql-driver/mysql v1.9.3
+## explicit; go 1.21.0
 github.com/go-sql-driver/mysql
 # github.com/goccy/go-json v0.10.2
 ## explicit; go 1.12
@@ -118,11 +118,11 @@ github.com/golang/snappy
 # github.com/google/go-querystring v1.0.0
 ## explicit
 github.com/google/go-querystring/query
-# github.com/gorilla/securecookie v1.1.2
-## explicit; go 1.20
+# github.com/gorilla/securecookie v1.1.1
+## explicit
 github.com/gorilla/securecookie
-# github.com/gorilla/sessions v1.4.0
-## explicit; go 1.23
+# github.com/gorilla/sessions v1.2.1
+## explicit
 github.com/gorilla/sessions
 # github.com/json-iterator/go v1.1.12
 ## explicit; go 1.12
@@ -134,8 +134,8 @@ github.com/klauspost/cpuid/v2
 ## explicit; go 1.18
 github.com/leodido/go-urn
 github.com/leodido/go-urn/scim/schema
-# github.com/ma-guo/admin-core v0.1.7
-## explicit
+# github.com/ma-guo/admin-core v0.2.1
+## explicit; go 1.23.6
 github.com/ma-guo/admin-core/app/common/consts
 github.com/ma-guo/admin-core/app/v1/protos
 github.com/ma-guo/admin-core/app/v1/views
@@ -149,8 +149,8 @@ github.com/ma-guo/admin-core/utils/password
 github.com/ma-guo/admin-core/xorm/daos
 github.com/ma-guo/admin-core/xorm/models
 github.com/ma-guo/admin-core/xorm/services
-# github.com/ma-guo/niuhe v1.0.0
-## explicit
+# github.com/ma-guo/niuhe v1.0.5
+## explicit; go 1.22
 github.com/ma-guo/niuhe
 github.com/ma-guo/niuhe/db
 # github.com/ma-guo/zpform v1.0.0
@@ -168,9 +168,6 @@ github.com/modern-go/concurrent
 # github.com/modern-go/reflect2 v1.0.2
 ## explicit; go 1.12
 github.com/modern-go/reflect2
-# github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826
-## explicit
-github.com/mohae/deepcopy
 # github.com/mojocn/base64Captcha v1.3.8
 ## explicit; go 1.16
 github.com/mojocn/base64Captcha
@@ -187,7 +184,7 @@ github.com/pelletier/go-toml/v2/internal/characters
 github.com/pelletier/go-toml/v2/internal/danger
 github.com/pelletier/go-toml/v2/internal/tracker
 github.com/pelletier/go-toml/v2/unstable
-# github.com/qiniu/go-sdk/v7 v7.25.2
+# github.com/qiniu/go-sdk/v7 v7.25.4
 ## explicit; go 1.14
 github.com/qiniu/go-sdk/v7
 github.com/qiniu/go-sdk/v7/auth
@@ -284,6 +281,7 @@ github.com/qiniu/go-sdk/v7/storagev2/downloader/destination
 github.com/qiniu/go-sdk/v7/storagev2/downloader/resumable_recorder
 github.com/qiniu/go-sdk/v7/storagev2/errors
 github.com/qiniu/go-sdk/v7/storagev2/http_client
+github.com/qiniu/go-sdk/v7/storagev2/internal/utils
 github.com/qiniu/go-sdk/v7/storagev2/objects
 github.com/qiniu/go-sdk/v7/storagev2/region
 github.com/qiniu/go-sdk/v7/storagev2/resolver
@@ -313,9 +311,12 @@ github.com/syndtr/goleveldb/leveldb/opt
 github.com/syndtr/goleveldb/leveldb/storage
 github.com/syndtr/goleveldb/leveldb/table
 github.com/syndtr/goleveldb/leveldb/util
-# github.com/tencentyun/cos-go-sdk-v5 v0.7.62
+# github.com/tencentyun/cos-go-sdk-v5 v0.7.68
 ## explicit; go 1.12
 github.com/tencentyun/cos-go-sdk-v5
+# github.com/tiendc/go-deepcopy v1.6.0
+## explicit; go 1.18
+github.com/tiendc/go-deepcopy
 # github.com/twitchyliquid64/golang-asm v0.15.1
 ## explicit; go 1.13
 github.com/twitchyliquid64/golang-asm/asm/arch
@@ -338,31 +339,31 @@ github.com/twitchyliquid64/golang-asm/unsafeheader
 # github.com/ugorji/go/codec v1.2.12
 ## explicit; go 1.11
 github.com/ugorji/go/codec
-# github.com/xuri/efp v0.0.0-20240408161823-9ad904a10d6d
+# github.com/xuri/efp v0.0.1
 ## explicit; go 1.11
 github.com/xuri/efp
-# github.com/xuri/excelize/v2 v2.9.0
-## explicit; go 1.18
+# github.com/xuri/excelize/v2 v2.9.1
+## explicit; go 1.23.0
 github.com/xuri/excelize/v2
-# github.com/xuri/nfp v0.0.0-20240318013403-ab9948c2c4a7
+# github.com/xuri/nfp v0.0.1
 ## explicit; go 1.15
 github.com/xuri/nfp
 # golang.org/x/arch v0.8.0
 ## explicit; go 1.18
 golang.org/x/arch/x86/x86asm
-# golang.org/x/crypto v0.28.0
-## explicit; go 1.20
+# golang.org/x/crypto v0.40.0
+## explicit; go 1.23.0
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
 golang.org/x/crypto/md4
 golang.org/x/crypto/ripemd160
 golang.org/x/crypto/sha3
-# golang.org/x/image v0.23.0
-## explicit; go 1.18
+# golang.org/x/image v0.25.0
+## explicit; go 1.23.0
 golang.org/x/image/font
 golang.org/x/image/math/fixed
-# golang.org/x/net v0.30.0
-## explicit; go 1.18
+# golang.org/x/net v0.41.0
+## explicit; go 1.23.0
 golang.org/x/net/html
 golang.org/x/net/html/atom
 golang.org/x/net/html/charset
@@ -371,16 +372,17 @@ golang.org/x/net/http2
 golang.org/x/net/http2/h2c
 golang.org/x/net/http2/hpack
 golang.org/x/net/idna
-# golang.org/x/sync v0.10.0
-## explicit; go 1.18
+golang.org/x/net/internal/httpcommon
+# golang.org/x/sync v0.16.0
+## explicit; go 1.23.0
 golang.org/x/sync/errgroup
 golang.org/x/sync/singleflight
-# golang.org/x/sys v0.26.0
-## explicit; go 1.18
+# golang.org/x/sys v0.34.0
+## explicit; go 1.23.0
 golang.org/x/sys/cpu
 golang.org/x/sys/unix
-# golang.org/x/text v0.21.0
-## explicit; go 1.18
+# golang.org/x/text v0.27.0
+## explicit; go 1.23.0
 golang.org/x/text/cases
 golang.org/x/text/encoding
 golang.org/x/text/encoding/charmap
@@ -410,8 +412,8 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
-# golang.org/x/time v0.10.0
-## explicit; go 1.18
+# golang.org/x/time v0.12.0
+## explicit; go 1.23.0
 golang.org/x/time/rate
 # google.golang.org/protobuf v1.34.1
 ## explicit; go 1.17
@@ -440,7 +442,7 @@ modernc.org/fileutil
 # xorm.io/builder v0.3.11-0.20220531020008-1bd24a7dc978
 ## explicit; go 1.11
 xorm.io/builder
-# xorm.io/xorm v1.3.9
+# xorm.io/xorm v1.3.10
 ## explicit; go 1.18
 xorm.io/xorm
 xorm.io/xorm/caches

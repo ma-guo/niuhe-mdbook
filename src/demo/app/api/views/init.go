@@ -4,7 +4,6 @@ package views
 import (
 	"demo/app/api/protos"
 
-	coreProtos "github.com/ma-guo/admin-core/app/v1/protos"
 	coreViews "github.com/ma-guo/admin-core/app/v1/views"
 	"github.com/ma-guo/niuhe"
 )
@@ -15,16 +14,8 @@ func GetModule() *niuhe.Module {
 	if thisModule == nil {
 		// thisModule = niuhe.NewModule("api")
 		// api 级权限处理
-		routes := []*coreProtos.RouteItem{}
-		for _, route := range protos.RouteItems {
-			routes = append(routes, &coreProtos.RouteItem{
-				Method: route.Method,
-				Path:   route.Path,
-				Name:   route.Name,
-			})
 
-		}
-		coreViews.GetProtocol().AddRoute("", routes)
+		coreViews.GetProtocol().AddRoute("", protos.RouteItems)
 
 		coreViews.AddSkipUrl("/api/hellow/docs/") // 不需要认证的路径都加入到这里来
 		thisModule = niuhe.NewModuleWithProtocolFactoryFunc("api", func() niuhe.IApiProtocol {

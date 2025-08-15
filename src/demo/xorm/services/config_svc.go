@@ -104,8 +104,8 @@ func (svc *_ConfigSvc) GetByIds(ids ...int64) (map[int64]*models.Config, error) 
 }
 
 // 分页获取数据
-func (svc *_ConfigSvc) GetPage(page, size int, value int64) ([]*models.Config, int64, error) {
-	rows, total, err := svc.dao().Config().GetPage(page, size, value)
+func (svc *_ConfigSvc) GetPage(page, size int, name string, value int64) ([]*models.Config, int64, error) {
+	rows, total, err := svc.dao().Config().GetPage(page, size, name, value)
 	if err != nil {
 		niuhe.LogInfo("GetPage Config error: %v", err)
 	}

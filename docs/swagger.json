@@ -27,14 +27,14 @@
     "paths": {
         "/api/config/page/": {
             "get": {
-                "description": "分页查询获取 Config 信息",
+                "description": "分页查询获取Config信息",
                 "security": [
                     {
                         "bearer": []
                     }
                 ],
                 "tags": [],
-                "summary": "分页查询获取 Config 信息",
+                "summary": "分页查询获取Config信息",
                 "parameters": [
                     {
                         "name": "page",
@@ -51,6 +51,13 @@
                         "description": "每页数量"
                     },
                     {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "配置名称"
+                    },
+                    {
                         "name": "value",
                         "in": "query",
                         "required": true,
@@ -60,7 +67,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "分页查询 Config 信息",
+                        "description": "分页查询Config信息",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -111,14 +118,14 @@
         },
         "/api/config/form/": {
             "get": {
-                "description": "查询获取 Config 信息",
+                "description": "查询获取Config信息",
                 "security": [
                     {
                         "bearer": []
                     }
                 ],
                 "tags": [],
-                "summary": "查询获取 Config 信息",
+                "summary": "查询获取Config信息",
                 "parameters": [
                     {
                         "name": "id",
@@ -175,14 +182,14 @@
         },
         "/api/config/add/": {
             "post": {
-                "description": "添加 Config 信息",
+                "description": "添加Config信息",
                 "security": [
                     {
                         "bearer": []
                     }
                 ],
                 "tags": [],
-                "summary": "添加 Config 信息",
+                "summary": "添加Config信息",
                 "parameters": [
                     {
                         "name": "id",
@@ -268,14 +275,14 @@
         },
         "/api/config/update/": {
             "post": {
-                "description": "更新 Config 信息",
+                "description": "更新Config信息",
                 "security": [
                     {
                         "bearer": []
                     }
                 ],
                 "tags": [],
-                "summary": "更新 Config 信息",
+                "summary": "更新Config信息",
                 "parameters": [
                     {
                         "name": "id",
@@ -361,14 +368,14 @@
         },
         "/api/config/delete/": {
             "delete": {
-                "description": "删除 Config 信息",
+                "description": "删除Config信息",
                 "security": [
                     {
                         "bearer": []
                     }
                 ],
                 "tags": [],
-                "summary": "删除 Config 信息",
+                "summary": "删除Config信息",
                 "parameters": [
                     {
                         "name": "ids",
@@ -380,7 +387,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Config 无数据返回",
+                        "description": "Config无数据返回",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -648,6 +655,10 @@
                     "type": "integer",
                     "description": "每页数量"
                 },
+                "name": {
+                    "type": "string",
+                    "description": "配置名称"
+                },
                 "value": {
                     "type": "integer",
                     "description": "配置值"
@@ -656,27 +667,8 @@
             "required": [
                 "page",
                 "size",
+                "name",
                 "value"
-            ]
-        },
-        "Demo.ConfigPageRsp": {
-            "type": "object",
-            "properties": {
-                "total": {
-                    "type": "integer",
-                    "description": "总数"
-                },
-                "items": {
-                    "type": "array",
-                    "description": "Config信息",
-                    "items": {
-                        "$ref": "#/definitions/Demo.ConfigItem"
-                    }
-                }
-            },
-            "required": [
-                "total",
-                "items"
             ]
         },
         "Demo.ConfigItem": {
@@ -704,19 +696,33 @@
                 }
             },
             "required": [
-                "id",
                 "name",
-                "value",
-                "create_at",
-                "update_at"
+                "value"
+            ]
+        },
+        "Demo.ConfigPageRsp": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "总数"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Demo.ConfigItem"
+                    }
+                }
+            },
+            "required": [
+                "total"
             ]
         },
         "Demo.ConfigFormReq": {
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "integer",
-                    "description": "undefined"
+                    "type": "integer"
                 }
             },
             "required": [
@@ -728,15 +734,12 @@
             "properties": {
                 "ids": {
                     "type": "array",
-                    "description": "记录id列表",
                     "items": {
                         "type": "integer"
                     }
                 }
             },
-            "required": [
-                "ids"
-            ]
+            "required": []
         },
         "Demo.ConfigNoneRsp": {
             "type": "object",

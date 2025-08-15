@@ -13,11 +13,11 @@ import (
 // 系统配置表
 type Config struct {
 	Id       int64     `xorm:"NOT NULL PK AUTOINCR INT(11)"`
-	Name     string    `xorm:"VARCHAR(255) COMMENT('配置名称')"` // 配置名称
-	Value    int64     `xorm:"INT COMMENT('配置值')"`           // 配置值
-	CreateAt time.Time `xorm:"created"`                      // 创建时间
-	UpdateAt time.Time `xorm:"updated"`                      // 更新时间
-	DeleteAt time.Time `xorm:"deleted"`                      // 删除时间
+	Name     string    `xorm:"VARCHAR(255) NOT NULL INDEX COMMENT('配置名称')"` // 配置名称
+	Value    int64     `xorm:"INT COMMENT('配置值')"`                          // 配置值
+	CreateAt time.Time `xorm:"created"`                                     // 创建时间
+	UpdateAt time.Time `xorm:"updated"`                                     // 更新时间
+	DeleteAt time.Time `xorm:"deleted"`                                     // 删除时间
 }
 
 func (row *Config) ToProto(item *protos.ConfigItem) *protos.ConfigItem {

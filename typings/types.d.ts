@@ -7,7 +7,7 @@ declare namespace Demo {
 	// gen enum const
 
 	/**
-	* 错误类型 
+	* 错误类型
 	*
 	* 成员包括 NOT_FOUND(404)
 	*/
@@ -17,7 +17,7 @@ declare namespace Demo {
 	}
 
 	/**
-	* 语言枚举类 
+	* 语言枚举类
 	*
 	* 成员包括 ZH("zh"), EN("en")
 	*/
@@ -29,7 +29,7 @@ declare namespace Demo {
 	}
 
 	/**
-	* 语言类型枚举 
+	* 语言类型枚举
 	*
 	* 成员包括 ZH_CN(1), ZH_TW(2)
 	*/
@@ -43,13 +43,21 @@ declare namespace Demo {
 	// gen model api
 
 
-	/** 空响应 */
-	interface NoneRsp { }
-
-
-	/** 空请求 */
-	interface NoneReq { }
-
+	/**
+	 * 分页查询Config信息
+	 *
+	 * 成员包括 page, size, name, value
+	 */
+	interface ConfigPageReq {
+		/** 页码 */
+		page: number;
+		/** 每页数量 */
+		size: number;
+		/** 配置名称 */
+		name: string;
+		/** 配置值 */
+		value: number;
+	}
 
 	/**
 	 * 系统配置表
@@ -70,30 +78,7 @@ declare namespace Demo {
 	}
 
 	/**
-	 * 请求 Config 信息
-	 *
-	 * 成员包括 id
-	 */
-	interface ConfigFormReq {
-		id: number;
-	}
-
-	/**
-	 * 分页查询 Config 信息
-	 *
-	 * 成员包括 page, size, value
-	 */
-	interface ConfigPageReq {
-		/** 页码 */
-		page: number;
-		/** 每页数量 */
-		size: number;
-		/** 配置值 */
-		value: number;
-	}
-
-	/**
-	 * 分页查询 Config 信息
+	 * 分页查询Config信息
 	 *
 	 * 成员包括 total, items
 	 */
@@ -105,7 +90,16 @@ declare namespace Demo {
 	}
 
 	/**
-	 * 批量删除 Config 信息
+	 * 请求Config信息
+	 *
+	 * 成员包括 id
+	 */
+	interface ConfigFormReq {
+		id: number;
+	}
+
+	/**
+	 * 批量删除Config信息
 	 *
 	 * 成员包括 ids
 	 */
@@ -114,7 +108,7 @@ declare namespace Demo {
 		ids: number[];
 	}
 
-	/** Config 无数据返回 */
+	/** Config无数据返回 */
 	interface ConfigNoneRsp { }
 
 
@@ -137,6 +131,14 @@ declare namespace Demo {
 		/** 问候语 */
 		greeting: string;
 	}
+
+	/** 空请求 */
+	interface NoneReq { }
+
+
+	/** 空响应 */
+	interface NoneRsp { }
+
 
 	/**
 	 * RPC测试用例请求参数
