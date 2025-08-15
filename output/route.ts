@@ -73,8 +73,8 @@ import { ajax_get, ajax_post, ajax_any } from "./request";
   * @path get /api/xxx/yyy/
   * @return Demo.XxxYyyRspMsg
   * @codes 错误码如下
-  * - ZHCN(1) 简体中文
-  * - NOTFOUND(404) 查找的数据不存在
+  * - ZH_CN(1) 简体中文
+  * - NOT_FOUND(404) 查找的数据不存在
 */
  export const getApiXxxYyy = (data: Demo.XxxYyyReqMsg): Promise<Rsp<Demo.XxxYyyRspMsg>> => {
     return ajax_any("get", "/api/xxx/yyy/", data);

@@ -25,3 +25,7 @@ handlebars.registerHelper('convertType', function (type) {
     };
     return typeMap[type] || type;
 });
+
+handlebars.registerHelper('isInteger', function (type) {
+    return type === 'integer';
+});

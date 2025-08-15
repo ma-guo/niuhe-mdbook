@@ -8,7 +8,11 @@
  declare enum {{name}} {
     {{#each fields}}
     /** {{desc}} */
-    {{ name }} = '{{value}}',
+    {{#if (isInteger ../type)}}
+    {{ name }} = {{value}},
+    {{else}}
+    {{ name }} = "{{value}}",
+    {{/if}}
     {{/each}}
  }
 

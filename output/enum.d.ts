@@ -6,23 +6,23 @@
  /** 错误类型 */
  declare enum Errors {
     /** 查找的数据不存在 */
-    NOTFOUND = '404',
+    NOT_FOUND = 404,
  }
 
  /** 语言枚举类 */
  declare enum Language {
     /** 中文 */
-    ZH = 'zh',
+    ZH = "zh",
     /** 英文 */
-    EN = 'en',
+    EN = "en",
  }
 
  /** 语言类型枚举 */
  declare enum LanguageType {
     /** 简体中文 */
-    ZHCN = '1',
+    ZH_CN = 1,
     /** 繁体中文 */
-    ZHTW = '2',
+    ZH_TW = 2,
  }
 
     
