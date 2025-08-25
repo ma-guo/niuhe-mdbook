@@ -25,7 +25,7 @@
         <el-table-column type="selection" width="55" align="center" />
         <el-table-column label="ID" prop="id" align="center" width="70"/>
         <el-table-column label="配置名称" prop="name" align="center" />
-		<el-table-column label="配置值" prop="value" align="center" />
+				<el-table-column label="配置值" prop="value" align="center" />
         <el-table-column fixed="right" label="操作" width="140" align="center">
           <template #default="{row}">
             <el-button type="primary" size="small" link @click="openDialogWithEdit(row.id)">
@@ -51,7 +51,7 @@
         <el-form-item prop="name" label="配置名称">
           <el-input v-model="formData.name" placeholder="配置名称" clearable type="textarea"/>
         </el-form-item>
-		<el-form-item prop="value" label="配置值">
+				<el-form-item prop="value" label="配置值">
           <el-input v-model="formData.value" placeholder="配置值" clearable type="number"/>
         </el-form-item>
       </el-form>
@@ -125,6 +125,7 @@ const fetchPage = async () => {
     state.total = rsp.data.total;
   }
 }
+
 /** 重置查询 */
 function resetQuery() {
   queryFormRef.value.resetFields();
@@ -197,16 +198,16 @@ function closeDialog() {
 
 /** 重置表单 */
 function resetForm() {
-    const value = configFormRef.value;
-    if(value) {
-        value.resetFields();
-        value.clearValidate();
-    }
-    formData.id = 0;
-    formData.name = "";
-formData.value = 0;
-    formData.create_at = "";
-    formData.update_at = "";
+  const value = configFormRef.value;
+  if(value) {
+      value.resetFields();
+      value.clearValidate();
+  }
+  formData.id = 0;
+  formData.name = "";
+	formData.value = 0;
+  formData.create_at = "";
+  formData.update_at = "";
 }
 
 /** 删除 Config */

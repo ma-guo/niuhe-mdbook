@@ -641,6 +641,81 @@
                 ],
                 "pref": "#/definitions/Demo.XxxYyyReqMsg"
             }
+        },
+        "/api/hellow/validator/": {
+            "get": {
+                "description": "测试 validator",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "tags": [],
+                "summary": "测试 validator",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "名字 长度:4-10"
+                    },
+                    {
+                        "name": "age",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "年龄 数值范围:10-20"
+                    },
+                    {
+                        "name": "var",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "变量 正则表达式:[A-Za-z][a-zA-Z0-9_]*"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "测试 validator返回参数",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "number",
+                                    "description": "返回状态码"
+                                },
+                                "data": {
+                                    "description": "成功时返回数据",
+                                    "$ref": "#/definitions/Demo.HellowValidatorRspMsg"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "失败时的提示消息"
+                                }
+                            },
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "data": {
+                                    "text": ""
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "pref": "#/definitions/Demo.HellowValidatorReqMsg"
+            }
         }
     },
     "definitions": {
@@ -812,6 +887,40 @@
             "required": [
                 "open_id",
                 "account_info"
+            ]
+        },
+        "Demo.HellowValidatorReqMsg": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "名字 长度:4-10"
+                },
+                "age": {
+                    "type": "integer",
+                    "description": "年龄 数值范围:10-20"
+                },
+                "var": {
+                    "type": "string",
+                    "description": "变量 正则表达式:[A-Za-z][a-zA-Z0-9_]*"
+                }
+            },
+            "required": [
+                "name",
+                "age",
+                "var"
+            ]
+        },
+        "Demo.HellowValidatorRspMsg": {
+            "type": "object",
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "消息"
+                }
+            },
+            "required": [
+                "text"
             ]
         }
     },

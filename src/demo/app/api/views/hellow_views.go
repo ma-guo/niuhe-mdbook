@@ -44,6 +44,12 @@ func (v *Hellow) Web_GET(c *niuhe.Context) {
 	})
 }
 
+// 测试 validator
+func (v *Hellow) Validator_GET(c *niuhe.Context, req *protos.HellowValidatorReqMsg, rsp *protos.HellowValidatorRspMsg) error {
+	rsp.Text = "通过验证"
+	return nil
+}
+
 func init() {
 	GetModule().Register(&Hellow{})
 }

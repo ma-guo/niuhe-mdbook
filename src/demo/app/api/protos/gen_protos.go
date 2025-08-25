@@ -69,3 +69,15 @@ type XxxYyyRspMsg struct {
 	OpenId      string `json:"open_id" zpf_name:"open_id" zpf_reqd:"true"`           //	用户open_id
 	AccountInfo string `json:"account_info" zpf_name:"account_info" zpf_reqd:"true"` //	账户信息
 }
+
+// 测试 validator请求参数
+type HellowValidatorReqMsg struct {
+	Name string `json:"name" zpf_name:"name" zpf_reqd:"true" zpf_len:"4 10"`               //	名字 长度:4-10
+	Age  int    `json:"age" zpf_name:"age" zpf_reqd:"true" zpf_num:"10 20"`                //	年龄 数值范围:10-20
+	Var  string `json:"var" zpf_name:"var" zpf_reqd:"true" zpf_re:"[A-Za-z][a-zA-Z0-9_]*"` //	变量 正则表达式:[A-Za-z][a-zA-Z0-9_]*
+}
+
+// 测试 validator返回参数
+type HellowValidatorRspMsg struct {
+	Text string `json:"text" zpf_name:"text" zpf_reqd:"true"` //	消息
+}

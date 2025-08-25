@@ -17,7 +17,8 @@ func GetModule() *niuhe.Module {
 
 		coreViews.GetProtocol().AddRoute("", protos.RouteItems)
 
-		coreViews.AddSkipUrl("/api/hellow/docs/") // 不需要认证的路径都加入到这里来
+		coreViews.AddSkipUrl("/api/hellow/docs/")      // 不需要认证的路径都加入到这里来
+		coreViews.AddSkipUrl("/api/hellow/validator/") // 不需要认证的路径都加入到这里来
 		thisModule = niuhe.NewModuleWithProtocolFactoryFunc("api", func() niuhe.IApiProtocol {
 			return coreViews.GetProtocol() // 使用 coreViews 中定义的协议处理
 		})

@@ -164,4 +164,28 @@ declare namespace Demo {
 		account_info: string;
 	}
 
+	/**
+	 * 测试 validator请求参数
+	 *
+	 * 成员包括 name, age, var
+	 */
+	interface HellowValidatorReqMsg {
+		/** 名字 长度:4-10 */
+		name: string;
+		/** 年龄 数值范围:10-20 */
+		age: number;
+		/** 变量 正则表达式:[A-Za-z][a-zA-Z0-9_]* */
+		var: string;
+	}
+
+	/**
+	 * 测试 validator返回参数
+	 *
+	 * 成员包括 text
+	 */
+	interface HellowValidatorRspMsg {
+		/** 消息 */
+		text: string;
+	}
+
 }

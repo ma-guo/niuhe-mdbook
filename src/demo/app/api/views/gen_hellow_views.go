@@ -25,3 +25,8 @@ func (v *_Gen_Hellow) Docs_GET(c *niuhe.Context, req *protos.NoneReq, rsp *proto
 func (v *_Gen_Hellow) Web_GET(c *niuhe.Context) {
 	// 在此实现具体方法, 需要自行处理请求参数和返回数据
 }
+
+// 测试 validator
+func (v *_Gen_Hellow) Validator_GET(c *niuhe.Context, req *protos.HellowValidatorReqMsg, rsp *protos.HellowValidatorRspMsg) error {
+	return niuhe.NewCommError(-1, "Not Implemented")
+}

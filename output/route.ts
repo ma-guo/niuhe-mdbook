@@ -80,3 +80,12 @@ import { ajax_get, ajax_post, ajax_any } from "./request";
     return ajax_any("get", "/api/xxx/yyy/", data);
  }
 
+ /**
+  * 测试 validator 
+  * @path get /api/hellow/validator/
+  * @return Demo.HellowValidatorRspMsg
+*/
+ export const getApiHellowValidator = (data: Demo.HellowValidatorReqMsg): Promise<Rsp<Demo.HellowValidatorRspMsg>> => {
+    return ajax_any("get", "/api/hellow/validator/", data);
+ }
+

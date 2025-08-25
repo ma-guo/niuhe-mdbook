@@ -23,4 +23,5 @@ var RouteItems = []*niuhe.RouteItem{
 		consts.LanguageType.ZH_CN, // 1 - 简体中文
 		consts.Errors.NOT_FOUND,   // 404 - 查找的数据不存在,
 	}},
+	{Method: "GET", Path: "/api/hellow/validator/", Name: "测试 validator"},
 }

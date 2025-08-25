@@ -37,3 +37,10 @@ with services():
     ).codes(
         LanguageType.ZH_CN, comm.Errors.NOT_FOUND,
     )
+    RPC('测试 validator', get='/api/hellow/validator').args(
+        name = required.String(desc='名字', minlen=4, maxlen=10)
+        age = required.Integer(desc='年龄', minnum=10, maxnum=20)
+        var = required.String(desc='变量', reg='[A-Za-z][a-zA-Z0-9_]*')
+    ).returns(
+        text = required.String(desc='消息')
+    )

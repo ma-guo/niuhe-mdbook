@@ -438,6 +438,57 @@
                     "ref": "Errors"
                 }
             ]
+        },
+        {
+            "method": "get",
+            "url": "/api/hellow/validator/",
+            "mode": "api",
+            "view": "hellow",
+            "name": "validator",
+            "desc": "测试 validator",
+            "req": {
+                "name": "HellowValidatorReqMsg",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "name",
+                        "desc": "名字 长度:4-10",
+                        "minlen": "4",
+                        "maxlen": "10"
+                    },
+                    {
+                        "label": "required",
+                        "type": "integer",
+                        "name": "age",
+                        "desc": "年龄 数值范围:10-20",
+                        "minnum": "10",
+                        "maxnum": "20"
+                    },
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "var",
+                        "desc": "变量 正则表达式:[A-Za-z][a-zA-Z0-9_]*",
+                        "reg": "[A-Za-z][a-zA-Z0-9_]*"
+                    }
+                ],
+                "mode": "api",
+                "desc": "测试 validator请求参数"
+            },
+            "rsp": {
+                "name": "HellowValidatorRspMsg",
+                "fields": [
+                    {
+                        "label": "required",
+                        "type": "string",
+                        "name": "text",
+                        "desc": "消息"
+                    }
+                ],
+                "mode": "api",
+                "desc": "测试 validator返回参数"
+            }
         }
     ],
     "enums": {
@@ -687,6 +738,49 @@
             ],
             "mode": "api",
             "desc": "RPC测试用例返回参数"
+        },
+        "api_HellowValidatorReqMsg": {
+            "name": "HellowValidatorReqMsg",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "name",
+                    "desc": "名字 长度:4-10",
+                    "minlen": "4",
+                    "maxlen": "10"
+                },
+                {
+                    "label": "required",
+                    "type": "integer",
+                    "name": "age",
+                    "desc": "年龄 数值范围:10-20",
+                    "minnum": "10",
+                    "maxnum": "20"
+                },
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "var",
+                    "desc": "变量 正则表达式:[A-Za-z][a-zA-Z0-9_]*",
+                    "reg": "[A-Za-z][a-zA-Z0-9_]*"
+                }
+            ],
+            "mode": "api",
+            "desc": "测试 validator请求参数"
+        },
+        "api_HellowValidatorRspMsg": {
+            "name": "HellowValidatorRspMsg",
+            "fields": [
+                {
+                    "label": "required",
+                    "type": "string",
+                    "name": "text",
+                    "desc": "消息"
+                }
+            ],
+            "mode": "api",
+            "desc": "测试 validator返回参数"
         }
     }
 }

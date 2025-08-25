@@ -107,3 +107,15 @@ export const getHellowWeb = (data: Object): Promise<Object> => {
 export const getXxxYyy = (data: Demo.XxxYyyReqMsg): Promise<Rsp<Demo.XxxYyyRspMsg>> => {
 	return ajax_get("/api/xxx/yyy/", data);
 };
+
+/**
+ * 测试 validator
+ * @path GET /api/hellow/validator/
+ * @param name string 名字 长度:4-10
+ * @param age number 年龄 数值范围:10-20
+ * @param var string 变量 正则表达式:[A-Za-z][a-zA-Z0-9_]*
+ * @return Demo.HellowValidatorRspMsg
+ */
+export const getHellowValidator = (data: Demo.HellowValidatorReqMsg): Promise<Rsp<Demo.HellowValidatorRspMsg>> => {
+	return ajax_get("/api/hellow/validator/", data);
+};
