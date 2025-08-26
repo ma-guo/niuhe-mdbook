@@ -21,6 +21,9 @@ func (svc *_Svc) Config() *_ConfigSvc {
 }
 
 func (svc *_ConfigSvc) caches(rows ...*models.Config) {
+	if len(rows) >= 100 {
+		return
+	}
 	for _, row := range rows {
 		svc.dao().SetCache(row, svc.prefix, "id", row.Id)
 	}
