@@ -8,8 +8,8 @@ import { ajax_get, ajax_post, ajax_any } from "./request";
 /**
  * 分页查询获取Config信息
  * @path GET /api/config/page/
- * @param page number 页码
- * @param size number 每页数量
+ * @param page number 页码 最小值:1
+ * @param size number 每页数量 数值范围:1-200
  * @param name string 配置名称
  * @param value number 配置值
  * @return Demo.ConfigPageRsp
@@ -21,7 +21,7 @@ export const getConfigPage = (data: Demo.ConfigPageReq): Promise<Rsp<Demo.Config
 /**
  * 查询获取Config信息
  * @path GET /api/config/form/
- * @param id number
+ * @param id number 记录ID 最小值:1
  * @return Demo.ConfigItem
  */
 export const getConfigForm = (data: Demo.ConfigFormReq): Promise<Rsp<Demo.ConfigItem>> => {
@@ -59,7 +59,7 @@ export const setConfigUpdate = (data: Demo.ConfigItem): Promise<Rsp<Demo.ConfigI
 /**
  * 删除Config信息
  * @path DELETE /api/config/delete/
- * @param ids number 记录id列表
+ * @param ids number 记录ID列表 最小值:1
  * @return Demo.ConfigNoneRsp
  */
 export const deleteConfigDelete = (data: Demo.ConfigDeleteReq): Promise<Rsp<Demo.ConfigNoneRsp>> => {
@@ -69,7 +69,7 @@ export const deleteConfigDelete = (data: Demo.ConfigDeleteReq): Promise<Rsp<Demo
 /**
  * 示例接口
  * @path GET /api/hellow/world/
- * @param name string 用户名
+ * @param name string 用户名 最小长度:2
  * @return Demo.HelloRsp
  */
 export const getHellowWorld = (data: Demo.HelloReq): Promise<Rsp<Demo.HelloRsp>> => {
@@ -97,8 +97,8 @@ export const getHellowWeb = (data: Object): Promise<Object> => {
 /**
  * RPC测试用例
  * @path GET /api/xxx/yyy/
- * @param name string 用户名
- * @param password string 密码
+ * @param name string 用户名 长度:6-16
+ * @param password string 密码 长度:8-20
  * @return Demo.XxxYyyRspMsg
   * @codes 错误码列表
  * 1 (LanguageType.ZH_CN) 简体中文

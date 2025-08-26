@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/ma-guo/niuhe"
 	"github.com/ma-guo/niuhe/db"
 	cache "github.com/patrickmn/go-cache"
 	"xorm.io/xorm"
@@ -33,13 +34,18 @@ func (dao *Dao) db() *xorm.Session {
 	// 理论上执行不到这里
 	return nil
 }
+
 func (dao *Dao) Atom(fn func() error) error {
 	if dao._db != nil {
 		return dao._db.Atom(fn)
 	}
 	return nil
 }
-func (dao *Dao) getCache(prefix string, args ...interface{}) (interface{}, bool) {
+
+// 获取缓存
+// @param prefix 缓存前缀
+// @param args 缓存键值
+func (dao *Dao) GetCache(prefix string, args ...any) (any, bool) {
 	key := prefix
 	for _, arg := range args {
 		key += fmt.Sprintf(":%v", arg)
@@ -47,17 +53,32 @@ func (dao *Dao) getCache(prefix string, args ...interface{}) (interface{}, bool)
 	return localCache.Get(key)
 }
 
-func (dao *Dao) setCache(val interface{}, duration time.Duration, prefix string, args ...interface{}) {
+// 设置缓存
+// @param val 缓存值
+// @param prefix 缓存前缀
+// @param args 缓存键值
+func (dao *Dao) SetCache(val any, prefix string, args ...any) {
 	key := prefix
 	for _, arg := range args {
 		key += fmt.Sprintf(":%v", arg)
 	}
-	localCache.Set(key, val, duration)
+	localCache.Set(key, val, 0) // 使用默认设置的过期日期
+}
+
+// 删除缓存
+// @param prefix 缓存前缀
+// @param args 缓存键值
+func (dao *Dao) DeleteCache(prefix string, args ...any) {
+	key := prefix
+	for _, arg := range args {
+		key += fmt.Sprintf(":%v", arg)
+	}
+	localCache.Delete(key)
 }
 
 // 查找记录
 // @param row 要查找结构
-func (dao *Dao) GetBy(row interface{}) (bool, error) {
+func (dao *Dao) GetBy(row any) (bool, error) {
 	has, err := dao.db().Get(row)
 	if err != nil {
 		return false, err
@@ -67,25 +88,64 @@ func (dao *Dao) GetBy(row interface{}) (bool, error) {
 
 // 插入记录
 // @param row 要插入的字段
-func (dao *Dao) Insert(row interface{}) (bool, error) {
-	affected, err := dao.db().Insert(row)
+func (dao *Dao) Insert(row any) (bool, error) {
+	session := dao.db()
+	if err := session.Begin(); err != nil {
+		niuhe.LogInfo("begin error %v", err)
+		return false, err
+	}
+	affected, err := session.Insert(row)
+	if err != nil {
+		session.Rollback()
+		return false, err
+	}
+	if err = session.Commit(); err != nil {
+		niuhe.LogInfo("commit error %v", err)
+		return false, err
+	}
 	return affected > 0, err
 }
 
 // 更新记录, row 结构中需要包含 id 字段
 // @param row 结构中需要包含 id 字段
-func (dao *Dao) Update(id int64, row interface{}) (bool, error) {
-	affected, err := dao.db().Where("`id`=?", id).AllCols().Update(row)
+func (dao *Dao) Update(id int64, row any) (bool, error) {
+	session := dao.db()
+	if err := session.Begin(); err != nil {
+		niuhe.LogInfo("begin error %v", err)
+		return false, err
+	}
+	affected, err := session.Where("`id`=?", id).AllCols().Update(row)
+	if err != nil {
+		session.Rollback()
+		return false, err
+	}
+	if err = session.Commit(); err != nil {
+		niuhe.LogInfo("commit error %v", err)
+		return false, err
+	}
 	return affected > 0, err
 }
 
 // 删除记录
 // @param row 要删除的空表结构, 需为指针
-func (dao *Dao) Delete(ids []int64, row interface{}) (bool, error) {
+func (dao *Dao) Delete(ids []int64, row any) (bool, error) {
 	if len(ids) == 0 {
 		return false, nil
 	}
-	affected, err := dao.db().Where("`id`", ids).Delete(row)
+	session := dao.db()
+	if err := session.Begin(); err != nil {
+		niuhe.LogInfo("begin error %v", err)
+		return false, err
+	}
+	affected, err := session.Where("`id`", ids).Delete(row)
+	if err != nil {
+		session.Rollback()
+		return false, err
+	}
+	if err = session.Commit(); err != nil {
+		niuhe.LogInfo("commit error %v", err)
+		return false, err
+	}
 	return affected > 0, err
 }
 

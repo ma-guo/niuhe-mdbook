@@ -5,10 +5,10 @@ package protos
 
 // 分页查询Config信息
 type ConfigPageReq struct {
-	Page  int    `json:"page" zpf_name:"page" zpf_reqd:"true"`   //	页码
-	Size  int    `json:"size" zpf_name:"size" zpf_reqd:"true"`   //	每页数量
-	Name  string `json:"name" zpf_name:"name" zpf_reqd:"true"`   //	配置名称
-	Value int64  `json:"value" zpf_name:"value" zpf_reqd:"true"` //	配置值
+	Page  int    `json:"page" zpf_name:"page" zpf_reqd:"true" zpf_minnum:"1"`  //	页码 最小值:1
+	Size  int    `json:"size" zpf_name:"size" zpf_reqd:"true" zpf_num:"1 200"` //	每页数量 数值范围:1-200
+	Name  string `json:"name" zpf_name:"name" zpf_reqd:"true"`                 //	配置名称
+	Value int64  `json:"value" zpf_name:"value" zpf_reqd:"true"`               //	配置值
 }
 
 // 系统配置表
@@ -28,12 +28,12 @@ type ConfigPageRsp struct {
 
 // 请求Config信息
 type ConfigFormReq struct {
-	Id int64 `json:"id" zpf_name:"id" zpf_reqd:"true"`
+	Id int64 `json:"id" zpf_name:"id" zpf_reqd:"true" zpf_minnum:"1"` //	记录ID 最小值:1
 }
 
 // 批量删除Config信息
 type ConfigDeleteReq struct {
-	Ids []int64 `json:"ids" zpf_name:"ids"` //	记录id列表
+	Ids []int64 `json:"ids" zpf_name:"ids" zpf_minnum:"1"` //	记录ID列表 最小值:1
 }
 
 // Config无数据返回
@@ -42,7 +42,7 @@ type ConfigNoneRsp struct {
 
 // 测试请求
 type HelloReq struct {
-	Name string `json:"name" zpf_name:"name" zpf_reqd:"true"` //	用户名
+	Name string `json:"name" zpf_name:"name" zpf_reqd:"true" zpf_minlen:"2"` //	用户名 最小长度:2
 }
 
 // 测试响应
@@ -60,8 +60,8 @@ type NoneRsp struct {
 
 // RPC测试用例请求参数
 type XxxYyyReqMsg struct {
-	Name     string `json:"name" zpf_name:"name" zpf_reqd:"true"`         //	用户名
-	Password string `json:"password" zpf_name:"password" zpf_reqd:"true"` //	密码
+	Name     string `json:"name" zpf_name:"name" zpf_reqd:"true" zpf_len:"6 16"`         //	用户名 长度:6-16
+	Password string `json:"password" zpf_name:"password" zpf_reqd:"true" zpf_len:"8 20"` //	密码 长度:8-20
 }
 
 // RPC测试用例返回参数

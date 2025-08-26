@@ -49,9 +49,9 @@ declare namespace Demo {
 	 * 成员包括 page, size, name, value
 	 */
 	interface ConfigPageReq {
-		/** 页码 */
+		/** 页码 最小值:1 */
 		page: number;
-		/** 每页数量 */
+		/** 每页数量 数值范围:1-200 */
 		size: number;
 		/** 配置名称 */
 		name: string;
@@ -95,6 +95,7 @@ declare namespace Demo {
 	 * 成员包括 id
 	 */
 	interface ConfigFormReq {
+		/** 记录ID 最小值:1 */
 		id: number;
 	}
 
@@ -104,7 +105,7 @@ declare namespace Demo {
 	 * 成员包括 ids
 	 */
 	interface ConfigDeleteReq {
-		/** 记录id列表 */
+		/** 记录ID列表 最小值:1 */
 		ids: number[];
 	}
 
@@ -118,7 +119,7 @@ declare namespace Demo {
 	 * 成员包括 name
 	 */
 	interface HelloReq {
-		/** 用户名 */
+		/** 用户名 最小长度:2 */
 		name: string;
 	}
 
@@ -146,9 +147,9 @@ declare namespace Demo {
 	 * 成员包括 name, password
 	 */
 	interface XxxYyyReqMsg {
-		/** 用户名 */
+		/** 用户名 长度:6-16 */
 		name: string;
-		/** 密码 */
+		/** 密码 长度:8-20 */
 		password: string;
 	}
 

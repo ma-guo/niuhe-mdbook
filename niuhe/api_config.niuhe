@@ -9,12 +9,12 @@ class ConfigItem():
 
 class ConfigFormReq():
 	'''请求Config信息'''
-	id = required.Long()
+	id = required.Long(desc='记录ID', minnum=1)
 
 class ConfigPageReq():
 	'''分页查询Config信息'''
-	page = required.Integer(desc='页码')
-	size = required.Integer(desc='每页数量')
+	page = required.Integer(desc='页码', minnum=1)
+	size = required.Integer(desc='每页数量', minnum=1, maxnum=200)
 	name = required.String(desc='配置名称')
 	value = required.Long(desc='配置值')
 
@@ -25,7 +25,7 @@ class ConfigPageRsp():
 
 class ConfigDeleteReq():
 	'''批量删除Config信息'''
-	ids = repeated.Long(desc='记录id列表')
+	ids = repeated.Long(desc='记录ID列表', minnum=1)
 
 class ConfigNoneRsp():
 	'''Config无数据返回'''

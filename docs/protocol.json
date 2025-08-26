@@ -19,13 +19,16 @@
                         "label": "required",
                         "type": "integer",
                         "name": "page",
-                        "desc": "页码"
+                        "desc": "页码 最小值:1",
+                        "minnum": "1"
                     },
                     {
                         "label": "required",
                         "type": "integer",
                         "name": "size",
-                        "desc": "每页数量"
+                        "desc": "每页数量 数值范围:1-200",
+                        "minnum": "1",
+                        "maxnum": "200"
                     },
                     {
                         "label": "required",
@@ -78,7 +81,8 @@
                         "label": "required",
                         "type": "long",
                         "name": "id",
-                        "desc": ""
+                        "desc": "记录ID 最小值:1",
+                        "minnum": "1"
                     }
                 ],
                 "mode": "api",
@@ -300,7 +304,8 @@
                         "label": "repeated",
                         "type": "long",
                         "name": "ids",
-                        "desc": "记录id列表"
+                        "desc": "记录ID列表 最小值:1",
+                        "minnum": "1"
                     }
                 ],
                 "mode": "api",
@@ -327,7 +332,8 @@
                         "label": "required",
                         "type": "string",
                         "name": "name",
-                        "desc": "用户名"
+                        "desc": "用户名 最小长度:2",
+                        "minlen": "2"
                     }
                 ],
                 "mode": "api",
@@ -389,13 +395,17 @@
                         "label": "required",
                         "type": "string",
                         "name": "name",
-                        "desc": "用户名"
+                        "desc": "用户名 长度:6-16",
+                        "minlen": "6",
+                        "maxlen": "16"
                     },
                     {
                         "label": "required",
                         "type": "string",
                         "name": "password",
-                        "desc": "密码"
+                        "desc": "密码 长度:8-20",
+                        "minlen": "8",
+                        "maxlen": "20"
                     }
                 ],
                 "mode": "api",
@@ -550,13 +560,16 @@
                     "label": "required",
                     "type": "integer",
                     "name": "page",
-                    "desc": "页码"
+                    "desc": "页码 最小值:1",
+                    "minnum": "1"
                 },
                 {
                     "label": "required",
                     "type": "integer",
                     "name": "size",
-                    "desc": "每页数量"
+                    "desc": "每页数量 数值范围:1-200",
+                    "minnum": "1",
+                    "maxnum": "200"
                 },
                 {
                     "label": "required",
@@ -638,7 +651,8 @@
                     "label": "required",
                     "type": "long",
                     "name": "id",
-                    "desc": ""
+                    "desc": "记录ID 最小值:1",
+                    "minnum": "1"
                 }
             ],
             "mode": "api",
@@ -651,7 +665,8 @@
                     "label": "repeated",
                     "type": "long",
                     "name": "ids",
-                    "desc": "记录id列表"
+                    "desc": "记录ID列表 最小值:1",
+                    "minnum": "1"
                 }
             ],
             "mode": "api",
@@ -670,7 +685,8 @@
                     "label": "required",
                     "type": "string",
                     "name": "name",
-                    "desc": "用户名"
+                    "desc": "用户名 最小长度:2",
+                    "minlen": "2"
                 }
             ],
             "mode": "api",
@@ -708,13 +724,17 @@
                     "label": "required",
                     "type": "string",
                     "name": "name",
-                    "desc": "用户名"
+                    "desc": "用户名 长度:6-16",
+                    "minlen": "6",
+                    "maxlen": "16"
                 },
                 {
                     "label": "required",
                     "type": "string",
                     "name": "password",
-                    "desc": "密码"
+                    "desc": "密码 长度:8-20",
+                    "minlen": "8",
+                    "maxlen": "20"
                 }
             ],
             "mode": "api",

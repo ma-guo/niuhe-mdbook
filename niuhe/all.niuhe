@@ -15,7 +15,7 @@ class LanguageType(ConstGroup)
 
 class HelloReq():
     '''测试请求'''
-    name = required.String(desc='用户名')
+    name = required.String(desc='用户名', minlen=2)
 
 class HelloRsp(Message):
    '''测试响应'''
@@ -29,8 +29,8 @@ with services():
     GET('协议文档', '/api/hellow/docs/', comm.NoneReq, comm.NoneRsp)
     GET('网页示例', '/api/hellow/web/')
     RPC('RPC测试用例', get='/api/xxx/yyy/').args(
-        name   = required.String(desc='用户名'),
-        password    = required.String(desc='密码'),
+        name   = required.String(desc='用户名', minlen=6, maxlen=16),
+        password    = required.String(desc='密码', minlen=8, maxlen=20),
     ).returns(
         open_id = required.String(desc='用户open_id'),
         account_info = required.String(cls=AccountInfo, desc='账户信息'),

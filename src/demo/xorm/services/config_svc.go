@@ -15,7 +15,15 @@ type _ConfigSvc struct {
 
 // 系统配置表
 func (svc *_Svc) Config() *_ConfigSvc {
-	return &_ConfigSvc{svc}
+	_svc := &_ConfigSvc{svc}
+	_svc.prefix = "Config"
+	return _svc
+}
+
+func (svc *_ConfigSvc) caches(rows ...*models.Config) {
+	for _, row := range rows {
+		svc.dao().SetCache(row, svc.prefix, "id", row.Id)
+	}
 }
 
 // 获取单个数据
@@ -23,10 +31,16 @@ func (svc *_ConfigSvc) GetById(id int64) (*models.Config, bool, error) {
 	if id <= 0 {
 		return nil, false, nil
 	}
+	if cache, has := svc.dao().GetCache(svc.prefix, "id", id); has {
+		return cache.(*models.Config), true, nil
+	}
 	row := &models.Config{Id: id}
 	has, err := svc.dao().GetBy(row)
 	if err != nil {
 		niuhe.LogInfo("GetById Config error: %v", err)
+	}
+	if has {
+		svc.caches(row)
 	}
 	return row, has, err
 }
@@ -37,6 +51,9 @@ func (svc *_ConfigSvc) GetBy(row *models.Config) (bool, error) {
 	if err != nil {
 		niuhe.LogInfo("GetBy Config error: %v", err)
 	}
+	if has {
+		svc.caches(row)
+	}
 	return has, err
 }
 
@@ -46,6 +63,7 @@ func (svc *_ConfigSvc) Update(row *models.Config) (bool, error) {
 	if err != nil {
 		niuhe.LogInfo("Update Config error: %v", err)
 	}
+	svc.caches(row)
 	return has, err
 }
 
@@ -67,6 +85,7 @@ func (svc *_ConfigSvc) Insert(rows ...*models.Config) error {
 			return err
 		}
 	}
+	svc.caches(rows...)
 	return nil
 }
 
@@ -82,6 +101,9 @@ func (svc *_ConfigSvc) Delete(rows ...*models.Config) error {
 	_, err := svc.dao().Delete(ids, &models.Config{})
 	if err != nil {
 		niuhe.LogInfo("Delete Config error: %v", err)
+	}
+	for _, row := range rows {
+		svc.dao().DeleteCache(svc.prefix, "id", row.Id)
 	}
 	return err
 }
@@ -100,6 +122,7 @@ func (svc *_ConfigSvc) GetByIds(ids ...int64) (map[int64]*models.Config, error) 
 	for _, row := range rows {
 		rowsMap[row.Id] = row
 	}
+	svc.caches(rows...)
 	return rowsMap, nil
 }
 
@@ -109,5 +132,6 @@ func (svc *_ConfigSvc) GetPage(page, size int, name string, value int64) ([]*mod
 	if err != nil {
 		niuhe.LogInfo("GetPage Config error: %v", err)
 	}
+	svc.caches(rows...)
 	return rows, total, nil
 }
